@@ -14,8 +14,13 @@
     <string name="enter_template">Enter Template</string>
     <string name="water">Water</string>
     <string name="enter_water">Enter Water</string>
-    <string name="for_primer">Forward Primer</string>
-    <string name="enter_primer">Enter Forward Primer</string>
+
     <string name="title_activity_tm_calc">TmCalcActivity</string>
+    <string name="fprimer">Forward Primer</string>
+    <string name="enter_fprimer">Enter Forward Primer</string>
+    <string name="rprimer">Reverse Primer</string>
+    <string name="enter_rprimer">Enter Reverse Primer</string>
+
+    <string name="done">Done</string>
 
 </resources>

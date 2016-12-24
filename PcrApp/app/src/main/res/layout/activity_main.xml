@@ -10,12 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enter_title"
-        android:textColor="#111"
-        android:paddingTop="10dp"
-        android:textSize="26sp"
-        android:fontFamily="sans-serif-condensed"
         android:layout_gravity="center"
-        />
+        android:paddingTop="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="#111"
+        android:textSize="24sp"/>
 
     <ScrollView
         android:id="@+id/main_scroll_view"
@@ -24,105 +23,163 @@
 
         <LinearLayout
             android:id="@+id/main_scroll_view_inner_layout"
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
+            android:padding="10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/dntp"
-                    android:textSize="@dimen/main_text_size"
                     android:layout_marginRight="5dp"
-                    android:textColor="#000"/>
+                    android:text="@string/dntp"
+                    android:textColor="#000"
+                    android:textSize="@dimen/main_text_size" />
+
                 <EditText
+                    android:id="@+id/main_act_et_dntp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_dntp"
-                    android:textSize="@dimen/main_text_size"/>
+                    android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
-                    android:text="@string/buffer"
+                    android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/main_text_size"
                     android:layout_marginRight="5dp"
+                    android:text="@string/buffer"
                     android:textColor="#000"
-                    android:id="@+id/textView" />
+                    android:textSize="@dimen/main_text_size" />
 
                 <EditText
+                    android:id="@+id/main_act_et_buffer"
+                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_buffer"
-                    android:textSize="@dimen/main_text_size"/>
+                    android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/polymerase"
-                    android:textSize="@dimen/main_text_size"
                     android:layout_marginRight="5dp"
-                    android:textColor="#000"/>
+                    android:text="@string/polymerase"
+                    android:textColor="#000"
+                    android:textSize="@dimen/main_text_size" />
+
                 <EditText
+                    android:id="@+id/main_act_et_polymerase"
+                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_polymerase"
-                    android:textSize="@dimen/main_text_size"/>
+                    android:textSize="@dimen/main_text_size" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/water"
-                    android:textSize="@dimen/main_text_size"
                     android:layout_marginRight="5dp"
-                    android:textColor="#000"/>
+                    android:text="@string/water"
+                    android:textColor="#000"
+                    android:textSize="@dimen/main_text_size" />
+
                 <EditText
+                    android:id="@+id/main_act_et_water"
+                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_water"
-                    android:textSize="@dimen/main_text_size"/>
+                    android:textSize="@dimen/main_text_size" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/for_primer"
-                    android:textSize="@dimen/main_text_size"
                     android:layout_marginRight="5dp"
-                    android:textColor="#000"/>
+                    android:text="@string/fprimer"
+                    android:textColor="#000"
+                    android:textSize="@dimen/main_text_size" />
+
                 <EditText
+                    android:id="@+id/main_act_et_fprimer"
+                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_primer"
-                    android:textSize="@dimen/main_text_size"/>
+                    android:hint="@string/enter_fprimer"
+                    android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/rprimer"
+                    android:textColor="#000"
+                    android:textSize="@dimen/main_text_size" />
+
+                <EditText
+                    android:id="@+id/main_act_et_rprimer"
+                    android:in
+                    android:layout_width="match_parent"
+                    android:inputType="none"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_rprimer"
+                    android:textSize="@dimen/main_text_size" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/main_act_done_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/done" />
 
         </LinearLayout>
     </ScrollView>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingTop="10dp"
+        android:text="@string/enter_title"
+        android:textColor="#111"
+        android:textSize="26sp" />
 
 </LinearLayout>
