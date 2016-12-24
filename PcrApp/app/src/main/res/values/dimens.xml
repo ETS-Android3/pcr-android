@@ -9,6 +9,7 @@
 
     <dimen name="entry_title_width">150dp</dimen>
     <dimen name="entry_edittext_size">200dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 
 </resources>
