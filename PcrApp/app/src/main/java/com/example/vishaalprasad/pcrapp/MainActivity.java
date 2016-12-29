@@ -83,9 +83,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private float calcDntp(){
-        dntp1=
+        dntp1=(dntpstock)
 
     }
 
 
 }
+/*
+	public static void main(String[] args) {
+		double c1=0;
+		double c2=0;
+		double v1=0;
+		double v2=0;
+		double pipette=0;
+
+
+		Scanner kb= new Scanner (System.in);
+		//enter final concentration
+		 c1=kb.nextDouble();
+		 //enter final volume
+		 v1=kb.nextDouble();
+		 //enter starting concentration (stock)
+		 c2=kb.nextDouble();
+
+		 		v2=((c1*v1)/c2);
+		 		pipette=v1-v2;
+		 System.out.println(v2);
+		 System.out.println("pipette " +v2 + " microliters into " +pipette + " microliters of solution");
+ */
