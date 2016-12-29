@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private float calcDntp(){
+        dntp1=
 
     }
 
