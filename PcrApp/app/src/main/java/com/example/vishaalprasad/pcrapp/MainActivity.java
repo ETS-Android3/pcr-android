@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button doneBtn;
 
     //starting variables (inputted by user)
+    //assuming fprimer and rprimer are starting from stock of 10 micromolar
     private float dntp0;
     private float fPrimer0;
     private float rPrimer0;
@@ -82,11 +83,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buffer1 = rxnVolume / buffer0;
     }
 
-    private float calcDntp(){
-//        dntp1=(dntpstock)
+    private void calcDntp(){
+        //dntp0 entered in millimolar
+        dntp1=((rxnVolume*dntp0)/(10000f));
+    }
+    private void calcfprimer{
+        //primer0 entered in micromolar
+        fPrimer1=((rxnVolume*fPrimer0)/(10f));
+
+    }
+    private void calcrprimer{
+        //primer0 entered in micromolar
+        rPrimer1=((rxnVolume*rPrimer0)/(10f));
+
+    }
+    private void calcwater{
+        water=(rxnVolume-(fPrimer1+rPrimer1+buffer1+pol1+dntp1));
+
     }
 
+    private void calcpol{
+        //pol0 entered in Units/microliter
+        pol1=((rxnVolume*pol0)/10f);
 
+
+    }
 }
 /*
 	public static void main(String[] args) {
