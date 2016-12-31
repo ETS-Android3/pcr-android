@@ -22,10 +22,12 @@
     <string name="enter_rprimer">Enter Reverse Primer</string>
 
     <!--TM calculator-->
-    <string name="input_tm_hint">Input Nucleotides</string>
+    <string name="input_nucleotides">Input Nucleotides</string>
+    <string name="delete_str">Delete</string>
 
     <!--Misc-->
     <string name="done">Done</string>
     <string name="calculate">Calculate</string>
+    <string name="clear">Clear</string>
 
 </resources>

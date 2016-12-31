@@ -7,16 +7,28 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.vishaalprasad.pcrapp.TmCalcActivity">
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/tm_calc_nucleotides"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="45dp"
+        android:hint="@string/input_nucleotides"
+        android:padding="10dp"
         android:textAlignment="center"
-        android:hint="@string/input_tm_hint"
-        android:padding="10dp" />
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tm_calc_temperature_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tm_calc_nucleotides"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="25&#176;C"
+        android:textColor="#000"
+        android:textSize="24sp" />
 
     <!--Main button container-->
     <LinearLayout
@@ -36,6 +48,7 @@
             android:weightSum="2.0">
 
             <Button
+                android:id="@+id/tm_calc_A_btn"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
@@ -43,9 +56,10 @@
                 android:layout_column="1"
                 android:layout_row="0"
                 android:layout_weight="1.0"
-                android:text="A"/>
+                android:text="A" />
 
             <Button
+                android:id="@+id/tm_calc_T_btn"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
@@ -53,7 +67,7 @@
                 android:layout_column="0"
                 android:layout_row="1"
                 android:layout_weight="1.0"
-                android:text="T"/>
+                android:text="T" />
 
         </LinearLayout>
 
@@ -65,6 +79,7 @@
             android:weightSum="2.0">
 
             <Button
+                android:id="@+id/tm_calc_C_btn"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
@@ -72,9 +87,10 @@
                 android:layout_column="1"
                 android:layout_row="0"
                 android:layout_weight="1.0"
-                android:text="C"/>
+                android:text="C" />
 
             <Button
+                android:id="@+id/tm_calc_G_btn"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_alignParentBottom="true"
@@ -82,28 +98,37 @@
                 android:layout_column="0"
                 android:layout_row="1"
                 android:layout_weight="1.0"
-                android:text="G"/>
+                android:text="G" />
 
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/tm_calc_calc_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tm_calc_act_main_btn_container"
         android:layout_centerHorizontal="true"
         android:text="@string/calculate" />
 
-    <TextView
+    <Button
+        android:id="@+id/tm_calc_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="25&#176;C"
-        android:textColor="#000"
-        android:textSize="24sp"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_above="@+id/tm_calc_act_main_btn_container"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:text="@string/delete_str" />
+
+    <Button
+        android:id="@+id/tm_calc_clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tm_calc_act_main_btn_container"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:text="@string/clear" />
 
 
 </RelativeLayout>

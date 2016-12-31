@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
 
     //views
@@ -39,19 +39,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initialize();
 
 
-
-
-
     }
 
-    private void initialize(){
+    private void initialize() {
         doneBtn = (Button) findViewById(R.id.main_act_done_btn);
         doneBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.main_act_done_btn:
                 getAllInputs();
                 break;
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void getAllInputs(){
+    private void getAllInputs() {
 
         try {
             dntp0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_dntp)).getText().toString());
@@ -72,45 +69,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             rPrimer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_rprimer)).getText().toString());
 
 
-
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             /* TODO: AlertDialog: bad number format */
         }
 
     }
 
-    private void calcBuffer(){
+    private void calcBuffer() {
         buffer1 = rxnVolume / buffer0;
     }
 
-    private void calcDntp(){
+    private void calcDntp() {
         //dntp0 entered in millimolar
-        dntp1=((rxnVolume*dntp0)/(10000f));
+        dntp1 = ((rxnVolume * dntp0) / (10000f));
     }
-    private void calcfprimer{
+
+    private void calcfprimer() {
         //primer0 entered in micromolar
-        fPrimer1=((rxnVolume*fPrimer0)/(10f));
+        fPrimer1 = ((rxnVolume * fPrimer0) / (10f));
 
     }
-    private void calcrprimer{
+
+    private void calcrprimer() {
         //primer0 entered in micromolar
-        rPrimer1=((rxnVolume*rPrimer0)/(10f));
-
-    }
-    private void calcwater{
-        water=(rxnVolume-(fPrimer1+rPrimer1+buffer1+pol1+dntp1));
+        rPrimer1 = ((rxnVolume * rPrimer0) / (10f));
 
     }
 
-    private void calcpol{
+    private void calcwater() {
+        water = (rxnVolume - (fPrimer1 + rPrimer1 + buffer1 + pol1 + dntp1));
+
+    }
+
+    private void calcpol() {
         //pol0 entered in Units/microliter
-        pol1=((rxnVolume*pol0)/10f);
+        pol1 = ((rxnVolume * pol0) / 10f);
 
 
     }
 }
 /*
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		double c1=0;
 		double c2=0;
 		double v1=0;
