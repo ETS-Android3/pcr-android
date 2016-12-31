@@ -1,10 +1,13 @@
+*.jar
+*.class
 *.iml
 .gradle
 PcrApp/local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-PcrApp/build
+PcrApp/build/*
 /captures
 */.idea/*
 PcrApp/.idea/*
+**/**.jar

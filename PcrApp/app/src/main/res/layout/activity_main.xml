@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enter_title"
+        android:text="@string/enter_var_title"
         android:layout_gravity="center"
         android:paddingTop="10dp"
         android:fontFamily="sans-serif-condensed"
@@ -66,7 +66,6 @@
 
                 <EditText
                     android:id="@+id/main_act_et_buffer"
-                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_buffer"
@@ -88,7 +87,6 @@
 
                 <EditText
                     android:id="@+id/main_act_et_polymerase"
-                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_polymerase"
@@ -110,7 +108,6 @@
 
                 <EditText
                     android:id="@+id/main_act_et_water"
-                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_water"
@@ -132,7 +129,6 @@
 
                 <EditText
                     android:id="@+id/main_act_et_fprimer"
-                    android:in
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_fprimer"
@@ -154,7 +150,6 @@
 
                 <EditText
                     android:id="@+id/main_act_et_rprimer"
-                    android:in
                     android:layout_width="match_parent"
                     android:inputType="none"
                     android:layout_height="wrap_content"
@@ -178,7 +173,7 @@
         android:layout_gravity="center"
         android:fontFamily="sans-serif-condensed"
         android:paddingTop="10dp"
-        android:text="@string/enter_title"
+        android:text="@string/enter_var_title"
         android:textColor="#111"
         android:textSize="26sp" />
 

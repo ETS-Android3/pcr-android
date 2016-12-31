@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PcrApp</string>
 
-    <string name="enter_title">Enter Variables</string>
+    <string name="enter_var_title">Enter Variables</string>
 
     <!--Variables-->
     <string name="dntp">DNTP</string>
@@ -21,6 +21,11 @@
     <string name="rprimer">Reverse Primer</string>
     <string name="enter_rprimer">Enter Reverse Primer</string>
 
+    <!--TM calculator-->
+    <string name="input_tm_hint">Input Nucleotides</string>
+
+    <!--Misc-->
     <string name="done">Done</string>
+    <string name="calculate">Calculate</string>
 
 </resources>
