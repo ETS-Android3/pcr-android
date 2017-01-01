@@ -11,3 +11,4 @@ PcrApp/build/*
 */.idea/*
 PcrApp/.idea/*
 **/**.jar
+/.idea/
