@@ -14,7 +14,8 @@
         android:paddingTop="10dp"
         android:fontFamily="sans-serif-condensed"
         android:textColor="#111"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        tools:text="enter final concentrations" />
 
     <ScrollView
         android:id="@+id/main_scroll_view"
@@ -39,15 +40,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:text="@string/dntp"
-                    android:textColor="#000"
-                    android:textSize="@dimen/main_text_size" />
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/main_act_et_dntp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_dntp"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="dNTP final (mM)"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -62,14 +66,18 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/buffer"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed" />
 
                 <EditText
                     android:id="@+id/main_act_et_buffer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_buffer"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed"
+                    tools:text="buffer final (_x)"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -83,14 +91,18 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/polymerase"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed" />
 
                 <EditText
                     android:id="@+id/main_act_et_polymerase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_polymerase"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="enter polymerase (u/μl)"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -104,14 +116,16 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/water"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed" />
 
                 <EditText
                     android:id="@+id/main_act_et_water"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_water"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed" />
             </LinearLayout>
 
             <LinearLayout
@@ -125,14 +139,18 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/fprimer"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed" />
 
                 <EditText
                     android:id="@+id/main_act_et_fprimer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_fprimer"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed"
+                    tools:text="enter forward primer (μM)"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
             <LinearLayout
@@ -146,7 +164,8 @@
                     android:layout_marginRight="5dp"
                     android:text="@string/rprimer"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed" />
 
                 <EditText
                     android:id="@+id/main_act_et_rprimer"
@@ -154,7 +173,10 @@
                     android:inputType="none"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_rprimer"
-                    android:textSize="@dimen/main_text_size" />
+                    android:textSize="@dimen/main_text_size"
+                    android:fontFamily="sans-serif-condensed"
+                    tools:text="enter reverse primer (μM)"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
             <Button
