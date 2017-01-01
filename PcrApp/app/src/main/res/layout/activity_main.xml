@@ -9,12 +9,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enter_var_title"
         android:layout_gravity="center"
-        android:paddingTop="10dp"
         android:fontFamily="sans-serif-condensed"
+        android:paddingTop="10dp"
+        android:text="@string/enter_var_title"
         android:textColor="#111"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <ScrollView
         android:id="@+id/main_scroll_view"
@@ -24,7 +24,7 @@
         <LinearLayout
             android:id="@+id/main_scroll_view_inner_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp">
@@ -47,6 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_dntp"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
@@ -69,6 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_buffer"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
@@ -90,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_polymerase"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
@@ -102,15 +105,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:text="@string/water"
+                    android:text="@string/template"
                     android:textColor="#000"
                     android:textSize="@dimen/main_text_size" />
 
                 <EditText
-                    android:id="@+id/main_act_et_water"
+                    android:id="@+id/main_act_et_template"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_water"
+                    android:hint="@string/enter_template"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
@@ -132,6 +136,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_fprimer"
+                    android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
@@ -151,17 +156,62 @@
                 <EditText
                     android:id="@+id/main_act_et_rprimer"
                     android:layout_width="match_parent"
-                    android:inputType="none"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_rprimer"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/main_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/rxn_volume"
+                    android:textColor="#000"
+                    android:textSize="@dimen/main_text_size" />
+
+                <EditText
+                    android:id="@+id/main_act_et_rxn_vol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_rxn_volume"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/main_text_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:text="@string/rxn_qty"
+                    android:textColor="#000"
+                    android:textSize="@dimen/main_text_size" />
+
+                <EditText
+                    android:id="@+id/main_act_et_rxn_qty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/enter_rxn_qty"
+                    android:inputType="number"
                     android:textSize="@dimen/main_text_size" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/main_act_done_btn"
+                android:id="@+id/main_act_calculate_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/done" />
+                android:text="@string/calculate" />
 
         </LinearLayout>
     </ScrollView>
