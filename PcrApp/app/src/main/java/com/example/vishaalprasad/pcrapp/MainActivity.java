@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int rxnQty;
     private float pol0;
     private float buffer0;
+    private float template;
 
     //final variables
     private float template;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calcwater() {
-        water = (rxnVolume - (fPrimer1 + rPrimer1 + buffer1 + pol1 + dntp1));
+        water = ((rxnVolume-template) - (fPrimer1 + rPrimer1 + buffer1 + pol1 + dntp1));
 
     }
 
