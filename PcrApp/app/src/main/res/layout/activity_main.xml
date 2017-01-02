@@ -50,7 +50,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_dntp"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="dNTP final (mM)"
                     android:textColor="@android:color/darker_gray"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size"
@@ -78,7 +77,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_buffer"
                     android:fontFamily="sans-serif-condensed"
-                    tools:text="buffer final (_x)"
                     android:textColor="@android:color/darker_gray"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size"
@@ -105,7 +103,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_polymerase"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="enter polymerase (u/μl)"
                     android:textColor="@android:color/darker_gray"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size"
@@ -134,7 +131,6 @@
                     android:fontFamily="sans-serif-condensed"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size"
-                    tools:text="Enter template quantitiy (μl)"
                     android:textColor="@android:color/darker_gray"
                     android:textStyle="normal|italic" />
             </LinearLayout>
@@ -159,7 +155,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_fprimer"
                     android:fontFamily="sans-serif-condensed"
-                    tools:text="enter forward primer (μM)"
                     android:textColor="@android:color/darker_gray"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size"
@@ -186,7 +181,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_rprimer"
                     android:fontFamily="sans-serif-condensed"
-                    tools:text="enter reverse primer (μM)"
                     android:textColor="@android:color/darker_gray"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size"
@@ -213,7 +207,6 @@
                     android:hint="@string/enter_rxn_volume"
                     android:inputType="numberDecimal"
                     android:textSize="@dimen/main_text_size"
-                    tools:text="enter volume per tube (μl)"
                     android:textColor="@android:color/darker_gray"
                     android:textStyle="normal|italic" />
             </LinearLayout>
@@ -239,7 +232,6 @@
                     android:hint="@string/enter_rxn_qty"
                     android:inputType="number"
                     android:textSize="@dimen/main_text_size"
-                    tools:text="enter mumber of reactions"
                     android:textColor="@android:color/darker_gray"
                     android:textStyle="normal|italic" />
             </LinearLayout>
