@@ -1,15 +1,19 @@
 package com.example.vishaalprasad.pcrapp;
 
-import android.support.v7.app.AlertDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
     private static final String TAG = "MainActivity";
+
+//    private static final int RESULT_DISPLAY_RESULT = 9000;
 
     //views
     private Button calculateBtn;
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_act_calculate_btn:
-                getAllInputs();
+                if(getAllInputs()) calculateAndShow();
                 break;
 
             default:
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void getAllInputs() {
+    private boolean getAllInputs() {
 
         try {
             dntp0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_dntp)).getText().toString().trim());
@@ -74,21 +78,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (buffer0 == 0f)
                 Toast.makeText(this, R.string.buffer_zero_error, Toast.LENGTH_LONG).show();
 
-            doCalculation();
+            return true;
 
         } catch (NumberFormatException e) {
             Toast.makeText(this, R.string.input_format_error, Toast.LENGTH_LONG).show();
+            return false;
         }
 
     }
 
-    private void doCalculation() {
+    private void calculateAndShow() {
         calcBuffer();
         calcDntp();
         calcfprimer();
         calcrprimer();
         calcwater();
         calcpol();
+
+        Intent displayPcrResultIntent = new Intent(this, DisplayPcrResultActivity.class);
+        displayPcrResultIntent.putExtra(DisplayPcrResultActivity.WATER_KEY, water);
+        displayPcrResultIntent.putExtra(DisplayPcrResultActivity.DNTP_KEY, dntp1);
+        displayPcrResultIntent.putExtra(DisplayPcrResultActivity.F_PRIMER_KEY, fPrimer1);
+        displayPcrResultIntent.putExtra(DisplayPcrResultActivity.R_PRIMER_KEY, rPrimer1);
+        displayPcrResultIntent.putExtra(DisplayPcrResultActivity.POLYMERASE_KEY, pol1);
+        displayPcrResultIntent.putExtra(DisplayPcrResultActivity.BUFFER_KEY, buffer1);
+        startActivity(displayPcrResultIntent);
     }
 
     private void calcBuffer() {
