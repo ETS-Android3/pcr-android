@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             rPrimer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_rprimer)).getText().toString().trim());
 
             //check the numbers
-            if(buffer0 == 0f)
+            if (buffer0 == 0f)
                 Toast.makeText(this, R.string.buffer_zero_error, Toast.LENGTH_LONG).show();
 
             doCalculation();
@@ -119,8 +119,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void calcpol() {
         //pol0 entered in Units/microliter
         pol1 = ((rxnVolume * pol0) / 10f);
-
-
     }
 }
 /*
