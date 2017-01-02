@@ -1,16 +1,18 @@
 package com.example.vishaalprasad.pcrapp;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
 
     //views
-    private Button doneBtn;
+    private Button calculateBtn;
 
     //starting variables (inputted by user)
     //assuming fprimer and rprimer are starting from stock of 10 micromolar
@@ -24,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private float template;
 
     //final variables
-    private float template;
     private float water;
     private float dntp1;
     private float fPrimer1;
@@ -38,19 +39,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initialize();
-
-
     }
 
     private void initialize() {
-        doneBtn = (Button) findViewById(R.id.main_act_done_btn);
-        doneBtn.setOnClickListener(this);
+        calculateBtn = (Button) findViewById(R.id.main_act_calculate_btn);
+        calculateBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.main_act_done_btn:
+            case R.id.main_act_calculate_btn:
                 getAllInputs();
                 break;
 
@@ -62,18 +61,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void getAllInputs() {
 
         try {
-            dntp0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_dntp)).getText().toString());
-            buffer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_buffer)).getText().toString());
-            pol0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_polymerase)).getText().toString());
-            water = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_water)).getText().toString());
-            fPrimer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_fprimer)).getText().toString());
-            rPrimer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_rprimer)).getText().toString());
+            dntp0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_dntp)).getText().toString().trim());
+            buffer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_buffer)).getText().toString().trim());
+            pol0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_polymerase)).getText().toString().trim());
+            template = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_template)).getText().toString().trim());
+            rxnVolume = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_rxn_vol)).getText().toString().trim());
+            rxnQty = Integer.parseInt(((TextView) findViewById(R.id.main_act_et_rxn_qty)).getText().toString().trim());
+            fPrimer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_fprimer)).getText().toString().trim());
+            rPrimer0 = Float.parseFloat(((TextView) findViewById(R.id.main_act_et_rprimer)).getText().toString().trim());
 
+            //check the numbers
+            if (buffer0 == 0f)
+                Toast.makeText(this, R.string.buffer_zero_error, Toast.LENGTH_LONG).show();
+
+            doCalculation();
 
         } catch (NumberFormatException e) {
-            /* TODO: AlertDialog: bad number format */
+            Toast.makeText(this, R.string.input_format_error, Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    private void doCalculation() {
+        calcBuffer();
+        calcDntp();
+        calcfprimer();
+        calcrprimer();
+        calcwater();
+        calcpol();
     }
 
     private void calcBuffer() {
@@ -82,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void calcDntp() {
         //dntp0 entered in millimolar
-        dntp1 = ((rxnVolume * dntp0) / (10000f));
+        dntp1 = ((rxnVolume * dntp0) / (10_000f));
     }
 
     private void calcfprimer() {
@@ -98,15 +113,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calcwater() {
-        water = ((rxnVolume-template) - (fPrimer1 + rPrimer1 + buffer1 + pol1 + dntp1));
-
+        water = ((rxnVolume - template) - (fPrimer1 + rPrimer1 + buffer1 + pol1 + dntp1));
     }
 
     private void calcpol() {
         //pol0 entered in Units/microliter
         pol1 = ((rxnVolume * pol0) / 10f);
-
-
     }
 }
 /*

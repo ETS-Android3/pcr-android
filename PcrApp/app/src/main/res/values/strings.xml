@@ -3,6 +3,7 @@
 
     <string name="enter_var_title">Enter Variables</string>
 
+    <!--Main Activity-->
     <!--Variables-->
     <string name="dntp">DNTP</string>
     <string name="enter_dntp">Enter DNTP</string>
@@ -13,13 +14,22 @@
     <string name="template">Template</string>
     <string name="enter_template">Enter Template</string>
     <string name="water">Water</string>
-    <string name="enter_water">Enter Water</string>
-
+    <string name="rxn_volume">Reaction Volume</string>
+    <string name="enter_rxn_volume">Enter Reaction Volume</string>
+    <string name="rxn_qty">Reaction Quantity</string>
+    <string name="enter_rxn_qty">Enter Reaction Quantity</string>
     <string name="title_activity_tm_calc">TmCalcActivity</string>
     <string name="fprimer">Forward Primer</string>
     <string name="enter_fprimer">Enter Forward Primer</string>
     <string name="rprimer">Reverse Primer</string>
     <string name="enter_rprimer">Enter Reverse Primer</string>
+
+    <string name="input_format_error">Please make sure the inputs consists of only numbers</string>
+    <string name="buffer_zero_error">The buffer size cannot be zero</string>
+
+    <!--Display Result-->
+    <string name="per_tube">Per Tube</string>
+    <string name="master_mix">Master Mix</string>
 
     <!--TM calculator-->
     <string name="input_nucleotides">Input Nucleotides</string>
