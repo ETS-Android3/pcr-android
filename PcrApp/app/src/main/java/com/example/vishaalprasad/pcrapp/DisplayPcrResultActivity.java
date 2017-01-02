@@ -30,6 +30,8 @@ public class DisplayPcrResultActivity extends AppCompatActivity {
 
         initialize();
 
+
+
     }
 
     private void initialize(){
