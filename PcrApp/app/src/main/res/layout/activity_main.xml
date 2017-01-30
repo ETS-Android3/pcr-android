@@ -16,12 +16,11 @@
         android:textColor="#111"
         android:textSize="24sp"
         tools:text="enter final concentrations" />
-        android:textSize="24sp" />
 
     <ScrollView
         android:id="@+id/main_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/main_scroll_view_inner_layout"
@@ -40,18 +39,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:text="@string/dntp"
                     android:fontFamily="sans-serif-condensed"
+                    android:text="@string/dntp"
                     android:textColor="@android:color/black" />
 
                 <EditText
                     android:id="@+id/main_act_et_dntp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_dntp"
                     android:fontFamily="sans-serif-condensed"
-                    android:textColor="@android:color/darker_gray"
+                    android:hint="@string/enter_dntp"
                     android:inputType="numberDecimal"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
@@ -66,19 +65,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="@string/buffer"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size"
-                    android:fontFamily="sans-serif-condensed" />
+                    android:textSize="@dimen/main_text_size" />
 
                 <EditText
                     android:id="@+id/main_act_et_buffer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_buffer"
                     android:fontFamily="sans-serif-condensed"
-                    android:textColor="@android:color/darker_gray"
+                    android:hint="@string/enter_buffer"
                     android:inputType="numberDecimal"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
@@ -92,19 +91,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="@string/polymerase"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size"
-                    android:fontFamily="sans-serif-condensed" />
+                    android:textSize="@dimen/main_text_size" />
 
                 <EditText
                     android:id="@+id/main_act_et_polymerase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_polymerase"
                     android:fontFamily="sans-serif-condensed"
-                    android:textColor="@android:color/darker_gray"
+                    android:hint="@string/enter_polymerase"
                     android:inputType="numberDecimal"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
@@ -118,20 +117,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="@string/template"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size"
-                    android:fontFamily="sans-serif-condensed" />
+                    android:textSize="@dimen/main_text_size" />
 
                 <EditText
                     android:id="@+id/main_act_et_template"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_template"
                     android:fontFamily="sans-serif-condensed"
+                    android:hint="@string/enter_template"
                     android:inputType="numberDecimal"
-                    android:textSize="@dimen/main_text_size"
                     android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
 
@@ -144,19 +143,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="@string/fprimer"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size"
-                    android:fontFamily="sans-serif-condensed" />
+                    android:textSize="@dimen/main_text_size" />
 
                 <EditText
                     android:id="@+id/main_act_et_fprimer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_fprimer"
                     android:fontFamily="sans-serif-condensed"
-                    android:textColor="@android:color/darker_gray"
+                    android:hint="@string/enter_fprimer"
                     android:inputType="numberDecimal"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
@@ -170,19 +169,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="@string/rprimer"
                     android:textColor="#000"
-                    android:textSize="@dimen/main_text_size"
-                    android:fontFamily="sans-serif-condensed" />
+                    android:textSize="@dimen/main_text_size" />
 
                 <EditText
                     android:id="@+id/main_act_et_rprimer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_rprimer"
                     android:fontFamily="sans-serif-condensed"
-                    android:textColor="@android:color/darker_gray"
+                    android:hint="@string/enter_rprimer"
                     android:inputType="numberDecimal"
+                    android:textColor="@android:color/darker_gray"
                     android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
@@ -206,8 +205,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_rxn_volume"
                     android:inputType="numberDecimal"
-                    android:textSize="@dimen/main_text_size"
                     android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
 
@@ -231,31 +230,31 @@
                     android:layout_weight="1"
                     android:hint="@string/enter_rxn_qty"
                     android:inputType="number"
-                    android:textSize="@dimen/main_text_size"
                     android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/main_text_size"
                     android:textStyle="normal|italic" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/main_act_calculate_btn"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/calculate"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:background="@android:color/holo_red_dark" />
+                android:background="@android:color/holo_red_dark"
+                android:text="@string/calculate" />
 
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/textView2"
+    <Button
+        android:id="@+id/main_act_tm_calc_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-condensed"
-        android:paddingTop="10dp"
-        android:text="@string/enter_var_title"
-        android:textColor="#111"
-        android:textSize="26sp" />
+        android:text="@string/tm_calc_str"
+        android:textAllCaps="false"
+        android:textColor="#111"/>
 
 </LinearLayout>

@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //views
     private Button calculateBtn;
+    private Button tmCalcBtn;
 
     //starting variables (inputted by user)
     //assuming fprimer and rprimer are starting from stock of 10 micromolar
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initialize() {
         calculateBtn = (Button) findViewById(R.id.main_act_calculate_btn);
         calculateBtn.setOnClickListener(this);
+        tmCalcBtn = (Button) findViewById(R.id.main_act_tm_calc_btn);
+        tmCalcBtn.setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.main_act_calculate_btn:
                 if(getAllInputs()) calculateAndShow();
                 break;
+
+            case R.id.main_act_tm_calc_btn:
+
+                Intent tmCalcActivityIntent = new Intent(this, TmCalcActivity.class);
+                startActivity(tmCalcActivityIntent);
 
             default:
                 break;
@@ -102,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         displayPcrResultIntent.putExtra(DisplayPcrResultActivity.R_PRIMER_KEY, rPrimer1);
         displayPcrResultIntent.putExtra(DisplayPcrResultActivity.POLYMERASE_KEY, pol1);
         displayPcrResultIntent.putExtra(DisplayPcrResultActivity.BUFFER_KEY, buffer1);
+        displayPcrResultIntent.putExtra(DisplayPcrResultActivity.RXN_QTY_KEY, rxnQty);
         startActivity(displayPcrResultIntent);
     }
 
