@@ -119,8 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calcDntp() {
-        //dntp0 entered in millimolar
-        dntp1 = ((rxnVolume * dntp0) / (10_000f));
+        //dntp0 entered in micromolar
+        dntp1 = ((10_000f/dntp0)/rxnVolume);
     }
 
     private void calcfprimer() {
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void calcpol() {
         //pol0 entered in Units/microliter
-        pol1 = ((rxnVolume * pol0) / 10f);
+        pol1 = ((10f / pol0) / rxnVolume);
     }
 }
 /*

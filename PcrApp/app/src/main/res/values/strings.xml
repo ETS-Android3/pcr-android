@@ -6,9 +6,9 @@
     <!--Main Activity-->
     <!--Variables-->
     <string name="dntp">DNTP</string>
-    <string name="enter_dntp">dNTP final(mM)</string>
+    <string name="enter_dntp">dNTP final(μM)</string>
     <string name="buffer">Buffer</string>
-    <string name="enter_buffer">Enter buffer final(_x)</string>
+    <string name="enter_buffer">Enter buffer initial(_x)</string>
     <string name="polymerase">Polymerase</string>
     <string name="enter_polymerase">Enter polymerase final(u/μl)</string>
     <string name="template">Template</string>
