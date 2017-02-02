@@ -1,8 +1,14 @@
 package com.example.vishaalprasad.pcrapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.widget.Button;
@@ -13,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "MainActivity";
 
+    private static final int RESULT_SETTINGS = 1001;
+
 //    private static final int RESULT_DISPLAY_RESULT = 9000;
 
     //views
@@ -21,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //starting variables (inputted by user)
     //assuming fprimer and rprimer are starting from stock of 10 micromolar
+    private float frPrimerStockConc;
+    private float dntpStockPrimer;
+    private float polStockPrimer;
     private float dntp0;
     private float fPrimer0;
     private float rPrimer0;
@@ -46,18 +57,73 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initialize();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_prefs:
+
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivityForResult(settingsIntent, RESULT_SETTINGS);
+
+            default:
+                break;
+        }
+
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (requestCode) {
+            case RESULT_SETTINGS:
+
+                getStockConcentrations();
+
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+    private void getStockConcentrations() {
+
+
+        frPrimerStockConc = Float.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.key_pref_dntp_stock_conc), "10"));
+        dntpStockPrimer = Float.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.key_pref_dntp_stock_conc), "10"));
+        polStockPrimer = Float.valueOf(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.key_pref_pol_stock_conc), "1"));
+
+//        Toast.makeText(this, "Fr Primer Stock concentration: " + frPrimerStockConc, Toast.LENGTH_LONG).show();
+
+    }
+
     private void initialize() {
         calculateBtn = (Button) findViewById(R.id.main_act_calculate_btn);
         calculateBtn.setOnClickListener(this);
         tmCalcBtn = (Button) findViewById(R.id.main_act_tm_calc_btn);
         tmCalcBtn.setOnClickListener(this);
+
+        getStockConcentrations();
+
+//        PreferenceManager.getDefaultSharedPreferences(this).getFloat(MainSettingsActivity.`)
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_act_calculate_btn:
-                if(getAllInputs()) calculateAndShow();
+                if (getAllInputs()) calculateAndShow();
                 break;
 
             case R.id.main_act_tm_calc_btn:
@@ -120,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void calcDntp() {
         //dntp0 entered in micromolar
-        dntp1 = ((10_000f/dntp0)/rxnVolume);
+        dntp1 = ((10_000f / dntp0) / rxnVolume);
     }
 
     private void calcfprimer() {

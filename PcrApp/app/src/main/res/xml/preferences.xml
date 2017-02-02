@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_stock_conc_title">
+
+        <!--add this for nonnegative-->
+        <!--android:digits="1234567890."-->
+
+        <EditTextPreference
+            android:defaultValue="10.0"
+            android:inputType="numberDecimal"
+            android:key="pref_fr_primer_stock_conc"
+            android:summary="@string/pref_millimolar_summary"
+            android:title="@string/pref_fr_primer_stock_conc_title" />
+        <EditTextPreference
+            android:defaultValue="10.0"
+            android:inputType="numberDecimal"
+            android:key="pref_dntp_stock_conc"
+            android:summary="@string/pref_millimolar_summary"
+            android:title="@string/pref_dntp_stock_conc_title" />
+        <EditTextPreference
+            android:defaultValue="1.0"
+            android:inputType="numberDecimal"
+            android:key="pref_pol_stock_conc"
+            android:summary="@string/pref_pol_summary"
+            android:title="@string/pref_pol_stock_conc_title" />
+    </PreferenceCategory>
+</PreferenceScreen>

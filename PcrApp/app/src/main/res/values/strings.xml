@@ -36,9 +36,22 @@
     <string name="delete_str">Delete</string>
     <string name="tm_calc_str">TM Calculator</string>
 
+    <!--Preferences-->
+    <string name="pref_stock_conc_title">Stock Concentrations</string>
+    <string name="pref_fr_primer_stock_conc_title">Forward/Reverse Primer</string>
+    <string name="pref_millimolar_summary">Units: millimolar</string>
+    <string name="pref_dntp_stock_conc_title">DNTP</string>
+    <string name="pref_pol_stock_conc_title">Polymerase</string>
+    <string name="pref_pol_summary">Units: u/μL</string>
+    <string name="key_pref_fr_stock_conc">pref_fr_primer_stock_conc</string>
+    <string name="key_pref_dntp_stock_conc">pref_dntp_stock_conc</string>
+    <string name="key_pref_pol_stock_conc">pref_pol_stock_conc</string>
+
     <!--Misc-->
     <string name="done">Done</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
+    <string name="title_activity_main_settings">Settings</string>
+
 
 </resources>
