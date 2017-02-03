@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calcwater() {
-        water = ((rxnVolume - template) - (fPrimer1 + rPrimer1 + buffer1 + pol1 + dntp1));
+        water = (rxnVolume - (fPrimer1 + rPrimer1 + buffer1 + pol1 + dntp1 + template));
     }
 
     private void calcpol() {
