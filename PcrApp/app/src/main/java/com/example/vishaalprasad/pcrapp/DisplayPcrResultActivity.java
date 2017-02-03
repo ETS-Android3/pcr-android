@@ -55,11 +55,13 @@ public class DisplayPcrResultActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.display_act_r_primer_tube_result)).setText(String.format("%.4f", rPrimerPerTube));
         ((TextView) findViewById(R.id.display_act_polymerase_tube_result)).setText(String.format("%.4f", polymerasePerTube));
         ((TextView) findViewById(R.id.display_act_buffer_tube_result)).setText(String.format("%.4f", bufferPerTube));
+        ((TextView) findViewById(R.id.display_act_water_result)).setText(String.format("%.4f", waterPerTube));
 
         ((TextView) findViewById(R.id.display_act_dntp_tube_master)).setText(String.format("%.4f", dntpPerTube * rxnQty));
         ((TextView) findViewById(R.id.display_act_f_primer_tube_master)).setText(String.format("%.4f", fPrimerPerTube * rxnQty));
         ((TextView) findViewById(R.id.display_act_r_primer_tube_master)).setText(String.format("%.4f", rPrimerPerTube * rxnQty));
         ((TextView) findViewById(R.id.display_act_polymerase_tube_master)).setText(String.format("%.4f", polymerasePerTube * rxnQty));
         ((TextView) findViewById(R.id.display_act_buffer_tube_master)).setText(String.format("%.4f", bufferPerTube * rxnQty));
+        ((TextView) findViewById(R.id.display_act_water_tube_master)).setText(String.format("%.4f", waterPerTube * rxnQty));
     }
 }
