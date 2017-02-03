@@ -186,18 +186,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void calcDntp() {
         //dntp0 entered in micromolar
-        dntp1 = ((10_000f / dntp0) / rxnVolume);
+        dntp1 = (1000*(dntpStockPrimer / dntp0) / rxnVolume);
     }
 
     private void calcfprimer() {
         //primer0 entered in micromolar
-        fPrimer1 = ((rxnVolume * fPrimer0) / (10f));
+        fPrimer1 = ((rxnVolume * fPrimer0) / (frPrimerStockConc));
 
     }
 
     private void calcrprimer() {
         //primer0 entered in micromolar
-        rPrimer1 = ((rxnVolume * rPrimer0) / (10f));
+        rPrimer1 = ((rxnVolume * rPrimer0) / (frPrimerStockConc));
 
     }
 
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void calcpol() {
         //pol0 entered in Units/microliter
-        pol1 = ((10f / pol0) / rxnVolume);
+        pol1 = ((pol0) / polStockPrimer);
     }
 }
 /*
