@@ -53,5 +53,13 @@
     <string name="clear">Clear</string>
     <string name="title_activity_main_settings">Settings</string>
 
+    <!--Units-->
+    <string name="unit_millimolar_string">mM</string>
+    <string name="unit_micromolar_string">μM</string>
+    <string name="unit_nanomolar_string">nM</string>
+    <string name="unit_milliliter_string">mL</string>
+    <string name="unit_microliter_string">μL</string>
+    <string name="unit_per_x_string">_x</string>
+
 
 </resources>
