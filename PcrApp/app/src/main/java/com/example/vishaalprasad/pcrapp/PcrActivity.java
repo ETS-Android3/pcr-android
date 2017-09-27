@@ -15,9 +15,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class PcrActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "PcrActivity";
 
     private static final int RESULT_SETTINGS = 1001;
 
