@@ -1,9 +1,15 @@
 <resources>
     <string name="app_name">PcrApp</string>
 
-    <string name="enter_var_title">Enter Variables</string>
+    <string name="pcr_equation">PCR Equation</string>
 
     <!--Main Activity-->
+    <string name="welcome_text">Welcome to your PCR Assistant</string>
+    <string name="pcr_calc">PCR Calculator</string>
+    <string name="tm_calculator">TM Calculator</string>
+
+
+    <!--PCR Activity-->
     <!--Variables-->
     <string name="dntp">DNTP</string>
     <string name="enter_dntp">dNTP final(μM)</string>
@@ -17,11 +23,11 @@
     <string name="rxn_volume">Reaction Volume</string>
     <string name="enter_rxn_volume">Enter Reaction Volume</string>
     <string name="rxn_qty">Reaction Quantity</string>
-    <string name="enter_rxn_qty">Enter mumber of reactions</string>
+    <string name="enter_rxn_qty">Enter number of reactions</string>
     <string name="title_activity_tm_calc">TmCalcActivity</string>
-    <string name="fprimer">Forward Primer</string>
+    <string name="forward_primer">Forward Primer</string>
     <string name="enter_fprimer">Enter forward primer(μM)</string>
-    <string name="rprimer">Reverse Primer</string>
+    <string name="reverse_primer">Reverse Primer</string>
     <string name="enter_rprimer">Enter reverse primer(μM)</string>
 
     <string name="input_format_error">Please make sure the inputs consists of only numbers</string>
@@ -60,6 +66,7 @@
     <string name="unit_milliliter_string">mL</string>
     <string name="unit_microliter_string">μL</string>
     <string name="unit_per_x_string">_x</string>
+    <string name="unit_per_reaction">u/reaction</string>
 
 
 </resources>

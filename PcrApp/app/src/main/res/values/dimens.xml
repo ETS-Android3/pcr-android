@@ -3,13 +3,21 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="secondary_horizontal_margin">8dp</dimen>
+    <dimen name="secondary_vertical_margin">8dp</dimen>
+
     <!--Main screen-->
     <!--text sizes-->
     <dimen name="main_text_size">16sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
 
     <dimen name="entry_title_width">150dp</dimen>
     <dimen name="entry_edittext_size">200dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <!--Buttons-->
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="button_horizontal_padding">8dp</dimen>
 
 
 </resources>

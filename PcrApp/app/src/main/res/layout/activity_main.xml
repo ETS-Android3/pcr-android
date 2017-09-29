@@ -2,221 +2,49 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AppTheme.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.vishaalprasad.pcrapp.PcrActivity">
+    tools:context="com.example.vishaalprasad.pcrapp.MainActivity">
 
-    <ScrollView
-        android:id="@+id/main_scroll_view"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/main_welcome_txt"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_act_tm_calc_btn"
+        android:layout_marginTop="22dp"
+        android:text="@string/welcome_text"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/large_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/main_act_calculate_btn"
-        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/main_pcr_calculator_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
-        android:text="@string/calculate"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="503dp" />
-
-
-    <Button
-        android:id="@+id/main_act_tm_calc_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/tm_calc_str"
-        android:textAllCaps="false"
-        android:textColor="#111"
+        android:background="@drawable/main_activity_button"
+        android:paddingLeft="@dimen/button_horizontal_padding"
+        android:paddingRight="@dimen/button_horizontal_padding"
+        android:text="@string/pcr_calc"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/main_scroll_view_inner_layout"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/main_tm_calculator_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp"
-        tools:layout_editor_absoluteX="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/dntp"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/main_act_et_dntp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_dntp"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/buffer"
-            android:textColor="#000"
-            android:textSize="@dimen/main_text_size" />
-
-        <EditText
-            android:id="@+id/main_act_et_buffer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_buffer"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal|italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/polymerase"
-            android:textColor="#000"
-            android:textSize="@dimen/main_text_size" />
-
-        <EditText
-            android:id="@+id/main_act_et_polymerase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="enter polymerase final (u/reaction)"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal|italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/template"
-            android:textColor="#000"
-            android:textSize="@dimen/main_text_size" />
-
-        <EditText
-            android:id="@+id/main_act_et_template"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_template"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal|italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/fprimer"
-            android:textColor="#000"
-            android:textSize="@dimen/main_text_size"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <EditText
-            android:id="@+id/main_act_et_fprimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_fprimer"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal|italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/rprimer"
-            android:textColor="#000"
-            android:textSize="@dimen/main_text_size"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <EditText
-            android:id="@+id/main_act_et_rprimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_rprimer"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal|italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/rxn_volume"
-            android:textColor="#000"
-            android:textSize="@dimen/main_text_size" />
-
-        <EditText
-            android:id="@+id/main_act_et_rxn_vol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_rxn_volume"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal|italic" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/rxn_qty"
-            android:textColor="#000"
-            android:textSize="@dimen/main_text_size" />
-
-        <EditText
-            android:id="@+id/main_act_et_rxn_qty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_rxn_qty"
-            android:inputType="number"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/main_text_size"
-            android:textStyle="normal|italic" />
-    </LinearLayout>
+        android:layout_marginTop="@dimen/secondary_vertical_margin"
+        android:background="@drawable/main_activity_button"
+        android:paddingLeft="@dimen/button_horizontal_padding"
+        android:paddingRight="@dimen/button_horizontal_padding"
+        android:text="@string/tm_calc_str"
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_pcr_calculator_button" />
 
 </android.support.constraint.ConstraintLayout>
