@@ -13,11 +13,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/black"
+        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+        android:drawablePadding="4dp"
+        android:padding="@dimen/full_rounded_button_padding"
+        android:background="@drawable/amber_round_butto"
         android:text="@string/calculate"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/activity_horizontal_margin" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/pcr_act_recycler_view"
@@ -28,5 +34,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/green_round_button"
+        android:drawableLeft="@drawable/ic_add_black_24dp"
+        android:drawablePadding="4dp"
+        android:padding="10dp"
+        android:text="@string/custom_reactant"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/pcr_act_calculate_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pcr_act_calculate_btn" />
+
 
 </android.support.constraint.ConstraintLayout>

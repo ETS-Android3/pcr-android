@@ -13,8 +13,6 @@ import java.util.List;
  */
 public abstract class ConcentrationReactant extends Reactant {
 
-    public List<Integer> integers = Arrays.asList(new Integer[] {4, 5});
-
     @Override
     List<? extends UnitHelper.Unit> getPossibleUnits() {
         return Arrays.asList(ConcentrationUnit.values());
