@@ -10,10 +10,10 @@ import java.util.List;
 public class PcrEngine {
 
     /**
-     * Does the PCR Calculation
+     * Solves the PCR Equation with the given parameters
      *
-     * @param reactants List of Reactants
-     * @param quantity How many reactions to be done
+     * @param reactants      List of Reactants
+     * @param quantity       How many reactions to be done
      * @param reactionVolume Total volume of reaction
      * @return A List of {@link PcrResult} Objects containing the amounts of each Reactant
      */
@@ -22,12 +22,23 @@ public class PcrEngine {
 
         List<PcrResult> results = new ArrayList<>();
 
-        PcrResult waterresResult = new PcrResult();
+        double reactantSum = 0d;
+        for (Reactant reactant : reactants) {
 
-        return null;
+            PcrResult result = new PcrResult();
+            result.setReactant(reactant);
+            result.setPerTube(reactant.getFinalValueInMicroMolar());
+
+            results.add(new PcrResult());
+            reactantSum += reactant.getFinalValueInMicroMolar();
+        }
+
+        double waterAmount = reactionVolume.getAmount() - reactantSum;
+        PcrResult waterResult = new PcrResult();
+        waterResult.setPerTube(waterAmount);
+
+        return results;
 
     }
-
-
 
 }

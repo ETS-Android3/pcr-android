@@ -47,15 +47,13 @@ public class UnitHelper {
      * Group of units only to be used with volume reactants
      */
     enum VolumeUnit implements Unit {
-        MICRO_LITER, MILLI_LITER;
+        MICRO_LITER;
 
         @Override
         public String getDisplayName(Resources res) {
             switch (this) {
                 case MICRO_LITER:
                     return res.getString(R.string.unit_microliter_string);
-                case MILLI_LITER:
-                    return res.getString(R.string.unit_milliliter_string);
                 default:
                     Log.e(TAG, "Unexpected Unit Type [" + this.getClass().getSimpleName() + "]");
                     return "";

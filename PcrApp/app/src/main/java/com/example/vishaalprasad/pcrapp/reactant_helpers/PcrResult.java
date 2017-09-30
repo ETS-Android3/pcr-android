@@ -1,5 +1,7 @@
 package com.example.vishaalprasad.pcrapp.reactant_helpers;
 
+import android.support.annotation.Nullable;
+
 import java.io.Serializable;
 
 /**
@@ -7,25 +9,21 @@ import java.io.Serializable;
  */
 public class PcrResult implements Serializable {
 
-    private Reactant reactant; // original Reactant
+    private Reactant reactant;
 
     private double perTube;
-    private double masterMix;
-
-    public double getMasterMix() {
-        return masterMix;
-    }
 
     public double getPerTube() {
         return perTube;
     }
 
-    public Reactant getReactant() {
+    /**
+     * Get the original reactant
+     *
+     * @return a reference to the original {@link Reactant}, null in the case of water
+     */
+    @Nullable public Reactant getReactant() {
         return reactant;
-    }
-
-    public void setMasterMix(double masterMix) {
-        this.masterMix = masterMix;
     }
 
     public void setPerTube(double perTube) {

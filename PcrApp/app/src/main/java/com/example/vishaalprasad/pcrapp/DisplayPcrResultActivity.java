@@ -26,8 +26,6 @@ public class DisplayPcrResultActivity extends AppCompatActivity {
     private float bufferPerTube;
     private int rxnQty;
 
-    private GridLayout resultsContianer;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +43,6 @@ public class DisplayPcrResultActivity extends AppCompatActivity {
         polymerasePerTube = getIntent().getFloatExtra(POLYMERASE_KEY, 0);
         bufferPerTube = getIntent().getFloatExtra(BUFFER_KEY, 0);
         rxnQty = getIntent().getIntExtra(RXN_QTY_KEY, 1);
-
-        resultsContianer = (GridLayout) findViewById(R.id.activity_display_pcr_result);
 
         //show the results
 
