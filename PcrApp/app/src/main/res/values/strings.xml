@@ -29,6 +29,7 @@
     <string name="enter_fprimer">Enter forward primer(μM)</string>
     <string name="reverse_primer">Reverse Primer</string>
     <string name="enter_rprimer">Enter reverse primer(μM)</string>
+    <string name="hint_enter_value">Enter Value</string>
 
     <string name="input_format_error">Please make sure the inputs consists of only numbers</string>
     <string name="buffer_zero_error">The buffer size cannot be zero</string>

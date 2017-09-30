@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        new PcrApplication();
+
         initialize();
 
     }
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         welcomeTextView = (TextView) findViewById(R.id.main_welcome_txt);
         pcrCalculatorButton = (Button) findViewById(R.id.main_pcr_calculator_button);
         pcrCalculatorButton.setOnClickListener(this);
-        tmCalculatorButton = (Button) findViewById(R.id.tm_calc_calc_button);
+        tmCalculatorButton = (Button) findViewById(R.id.main_tm_calculator_button);
         tmCalculatorButton.setOnClickListener(this);
 
         // custom font (Roboto Slab) for the welcome text
