@@ -28,7 +28,7 @@ public abstract class Reactant implements Serializable {
         List<? extends Unit> units = getPossibleUnits();
 
         List<CharSequence> names = new ArrayList<>(units.size());
-        for (Unit u : units) u.getDisplayName(res);
+        for (Unit u : units) names.add(u.getDisplayName(res));
 
         return names;
     }
