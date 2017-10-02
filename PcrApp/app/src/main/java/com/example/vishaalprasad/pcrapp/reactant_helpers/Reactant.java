@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Any item that can be in a PCR Reaction
  */
-public abstract class Reactant implements Serializable {
+public abstract class Reactant implements Serializable, PcrReactable {
 
     protected double amount;
     protected Unit unit;
@@ -20,6 +20,7 @@ public abstract class Reactant implements Serializable {
 
     /**
      * Get all possible Units' names
+     *
      * @param res Resources to get Strings
      * @return List<CharSequence> of all Units' names
      */
@@ -34,6 +35,10 @@ public abstract class Reactant implements Serializable {
     }
 
     abstract double getFinalValueInMicroMolar();
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 
     public double getAmount() {
         return amount;

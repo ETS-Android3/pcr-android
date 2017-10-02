@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="6dp"
+    android:paddingTop="6dp">
+
+    <TextView
+        android:id="@+id/cell_quantity_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="55"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
+        android:lines="1"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/main_text_size"
+        android:text="@string/reaction_quantity" />
+
+    <EditText
+        android:id="@+id/cell_quantity_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="55"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="@string/enter_reaction_quantity"
+        android:inputType="number"
+        android:textSize="@dimen/main_text_size" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="10" />
+
+</LinearLayout>

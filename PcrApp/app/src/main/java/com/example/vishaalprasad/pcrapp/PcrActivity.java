@@ -10,14 +10,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.example.vishaalprasad.pcrapp.reactant_helpers.BufferReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.DntpReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ForwardPrimerReactant;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrQuantity;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrReactable;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PolymeraseReactant;
-import com.example.vishaalprasad.pcrapp.reactant_helpers.Reactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactantAdapter;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactionVolume;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReversePrimerReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.TemplateReactant;
 
@@ -34,7 +35,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     private Button calculateBtn;
     private RecyclerView reactantsRecyclerView;
 
-    private List<Reactant> reactants;
+    private List<PcrReactable> reactables;
     private ReactantAdapter reactantAdapter;
 
     @Override
@@ -42,8 +43,8 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pcr);
 
-        reactants = new ArrayList<>();
-        reactantAdapter = new ReactantAdapter(reactants);
+        reactables = new ArrayList<>();
+        reactantAdapter = new ReactantAdapter(reactables);
 
         initializeDefaultReactants();
         initialize();
@@ -61,7 +62,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.menu_prefs:
+            case R.id.pcr_menu_stock:
 
                 Intent settingsIntent = new Intent(this, SettingsActivity.class);
                 startActivityForResult(settingsIntent, RESULT_SETTINGS);
@@ -101,26 +102,34 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initializeDefaultReactants() {
-        reactants.add(new DntpReactant());
-        reactants.add(new BufferReactant());
-        reactants.add(new PolymeraseReactant());
-        reactants.add(new TemplateReactant());
+        reactables.add(new DntpReactant());
+        reactables.add(new BufferReactant());
+        reactables.add(new PolymeraseReactant());
+        reactables.add(new TemplateReactant());
         ForwardPrimerReactant forwardPrimerReactant = new ForwardPrimerReactant();
-        reactants.add(forwardPrimerReactant);
-        reactants.add(new ReversePrimerReactant(forwardPrimerReactant));
+        reactables.add(forwardPrimerReactant);
+        reactables.add(new ReversePrimerReactant(forwardPrimerReactant));
+
+        reactables.add(new ReactionVolume());
+        reactables.add(new PcrQuantity());
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
 
-            // TODO: 9/29/17 add calculate button
+            case R.id.pcr_act_calculate_btn:
+
+                // engine -- calculation
+//                PcrEngine.calculatePcr(reactables, quantity, volume);
+
+                // send results to results screen
+
+                break;
+
 
             default:
                 break;
         }
     }
-
-
-
 }

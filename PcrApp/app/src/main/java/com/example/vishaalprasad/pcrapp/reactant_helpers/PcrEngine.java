@@ -17,7 +17,7 @@ public class PcrEngine {
      * @param reactionVolume Total volume of reaction
      * @return A List of {@link PcrResult} Objects containing the amounts of each Reactant
      */
-    private static List<PcrResult> calculatePcr(List<Reactant> reactants, int quantity,
+    public static List<PcrResult> calculatePcr(List<Reactant> reactants, int quantity,
                                                 ReactionVolume reactionVolume) {
 
         List<PcrResult> results = new ArrayList<>();

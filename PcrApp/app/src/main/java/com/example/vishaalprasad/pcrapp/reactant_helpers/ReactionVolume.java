@@ -5,8 +5,10 @@ import java.io.Serializable;
 /**
  * Holder for a total Reaction Volume quantity
  * Only one instance per PCR Equation
+ *
+ * Unit is inherently microliter
  */
-public class ReactionVolume implements Serializable {
+public class ReactionVolume implements Serializable, PcrReactable {
 
     private double amount;
 
@@ -18,7 +20,4 @@ public class ReactionVolume implements Serializable {
         return amount;
     }
 
-    public UnitHelper.VolumeUnit getUnit() {
-        return UnitHelper.VolumeUnit.MICRO_LITER;
-    }
 }
