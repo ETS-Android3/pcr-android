@@ -8,32 +8,22 @@
     <string name="pcr_calc">PCR Calculator</string>
     <string name="tm_calculator">TM Calculator</string>
 
-
     <!--PCR Activity-->
     <!--Variables-->
     <string name="dntp">DNTP</string>
-    <string name="enter_dntp">dNTP final(μM)</string>
     <string name="buffer">Buffer</string>
-    <string name="enter_buffer">Enter buffer initial(_x)</string>
     <string name="polymerase">Polymerase</string>
-    <string name="enter_polymerase">Enter polymerase final(u/μl)</string>
     <string name="template">Template</string>
-    <string name="enter_template">Enter template quantity(μl)</string>
     <string name="water">Water</string>
     <string name="reaction_volume">Reaction Volume</string>
     <string name="enter_reaction_volume">Enter Reaction Volume</string>
     <string name="reaction_quantity">Reaction Quantity</string>
     <string name="enter_reaction_quantity">Enter reaction quantity</string>
-    <string name="title_activity_tm_calc">TmCalcActivity</string>
     <string name="forward_primer">Forward Primer</string>
-    <string name="enter_fprimer">Enter forward primer(μM)</string>
     <string name="reverse_primer">Reverse Primer</string>
-    <string name="enter_rprimer">Enter reverse primer(μM)</string>
     <string name="hint_enter_value">Enter Value</string>
     <string name="custom_reactant">Custom reactant</string>
-
-    <string name="input_format_error">Please make sure the inputs consists of only numbers</string>
-    <string name="buffer_zero_error">The buffer size cannot be zero</string>
+    <string name="pcr_menu_stock_conc">Stock</string>
 
     <!--Display Result-->
     <string name="per_tube">Per Tube</string>
@@ -47,21 +37,12 @@
     <!--Preferences-->
     <string name="pref_stock_conc_title">Stock Concentrations</string>
     <string name="hint_enter_stock_concentration">Enter stock concentration</string>
-    <string name="missing_stock_concentration">Missing stock concentration</string>
-    <string name="pref_fr_primer_stock_conc_title">Forward/Reverse Primer</string>
-    <string name="pref_millimolar_summary">Units: millimolar</string>
-    <string name="pref_dntp_stock_conc_title">DNTP</string>
-    <string name="pref_pol_stock_conc_title">Polymerase</string>
-    <string name="pref_pol_summary">Units: u/μL</string>
-    <string name="key_pref_fr_stock_conc">pref_fr_primer_stock_conc</string>
-    <string name="key_pref_dntp_stock_conc">pref_dntp_stock_conc</string>
-    <string name="key_pref_pol_stock_conc">pref_pol_stock_conc</string>
+    <string name="missing_stock_concentration">Tap to set stock concentration</string>
 
     <!--Misc-->
     <string name="done">Done</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
-    <string name="pcr_menu_stock_conc">Stock</string>
 
     <!--Units-->
     <string name="unit_millimolar_string">mM</string>
@@ -72,6 +53,5 @@
     <string name="unit_per_x_string">_x</string>
     <string name="unit_per_reaction">u</string>
     <string name="unit_per_microliter">u/μL</string>
-
 
 </resources>

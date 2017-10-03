@@ -5,8 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="mat_green">#4caf50</color>
-    <color name="mat_green_light">#80e27e</color>
     <color name="mat_action_amber">#ff6f00</color>
-    <color name="mat_action_amber_light">#ffa040</color>
+    <color name="ripple_accent">#bbbbbb</color>
 
 </resources>

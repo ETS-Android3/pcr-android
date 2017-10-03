@@ -26,6 +26,7 @@ public class StockConcentrationActivity extends PreferenceActivity {
 
         // add Stock Concentration PreferenceCategory
         PreferenceCategory stockConcentrationCategory = new PreferenceCategory(this);
+        stockConcentrationCategory.setTitle(R.string.pref_stock_conc_title);
         getPreferenceScreen().addPreference(stockConcentrationCategory);
 
         // get all PcrReactable from Intent

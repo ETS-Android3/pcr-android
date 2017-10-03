@@ -17,7 +17,7 @@
         android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
         android:drawablePadding="4dp"
         android:padding="@dimen/full_rounded_button_padding"
-        android:background="@drawable/amber_round_butto"
+        android:background="@drawable/amber_round_button"
         android:text="@string/calculate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

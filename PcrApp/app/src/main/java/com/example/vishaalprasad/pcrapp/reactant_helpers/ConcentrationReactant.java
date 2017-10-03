@@ -35,7 +35,10 @@ public abstract class ConcentrationReactant extends Reactant implements Serializ
         super.setUnit(unit);
 
         // current stock concentration is not compatible, drop it
-        if (stockConcentration != null && !getPossibleStockConcUnits().contains(stockConcentration.getUnit())) {
+        if (stockConcentration != null
+                && (getPossibleStockConcUnits() == null
+                    || !getPossibleStockConcUnits().contains(stockConcentration.getUnit()))) {
+
             stockConcentration = null;
         }
     }
