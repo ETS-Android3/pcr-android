@@ -8,18 +8,21 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *  Reverse Primer in PCR, relies on a {@link ForwardPrimerReactant} for Stock Concentration
+ *  Reverse Primer in PCR
+ *  Relies heavily on a {@link ForwardPrimerReactant} for the shared {@link StockConcentration}
  */
 public class ReversePrimerReactant extends Reactant implements Serializable {
 
     private ForwardPrimerReactant forwardPrimerReference;
 
     public ReversePrimerReactant(ForwardPrimerReactant forwardPrimerReactant) {
+        super(forwardPrimerReactant.getPossibleUnits().get(0));
+
         this.forwardPrimerReference = forwardPrimerReactant;
     }
 
     @Override
-    List<? extends UnitHelper.Unit> getPossibleUnits() {
+    public List<? extends UnitHelper.Unit> getPossibleUnits() {
         return forwardPrimerReference.getPossibleUnits();
     }
 
@@ -30,7 +33,7 @@ public class ReversePrimerReactant extends Reactant implements Serializable {
     }
 
     @Override
-    String getName(Resources res) {
+    public String getName(Resources res) {
         return res.getString(R.string.reverse_primer);
     }
 }

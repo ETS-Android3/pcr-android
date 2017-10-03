@@ -11,12 +11,20 @@ import java.util.List;
 /**
  * Any item that can be in a PCR Reaction
  */
-public abstract class Reactant implements Serializable, PcrReactable {
+public abstract class Reactant implements PcrReactable, Serializable {
 
     protected double amount;
     protected Unit unit;
 
-    abstract List<? extends Unit> getPossibleUnits();
+    public Reactant() {
+        setUnit(getPossibleUnits().get(0));
+    }
+
+    public Reactant(Unit unit) {
+        setUnit(unit);
+    }
+
+    public abstract List<? extends Unit> getPossibleUnits();
 
     /**
      * Get all possible Units' names
@@ -44,5 +52,13 @@ public abstract class Reactant implements Serializable, PcrReactable {
         return amount;
     }
 
-    abstract String getName(Resources res);
+    public abstract String getName(Resources res);
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
 }

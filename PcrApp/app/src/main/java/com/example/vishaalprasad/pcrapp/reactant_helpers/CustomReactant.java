@@ -23,7 +23,7 @@ public class CustomReactant extends ConcentrationReactant implements Serializabl
     }
 
     @Override
-    String getName(Resources res) {
+    public String getName(Resources res) {
         return this.name;
     }
 

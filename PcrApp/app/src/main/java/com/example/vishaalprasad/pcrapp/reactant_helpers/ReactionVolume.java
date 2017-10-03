@@ -5,10 +5,10 @@ import java.io.Serializable;
 /**
  * Holder for a total Reaction Volume quantity
  * Only one instance per PCR Equation
- *
+ * <p>
  * Unit is inherently microliter
  */
-public class ReactionVolume implements Serializable, PcrReactable {
+public class ReactionVolume implements PcrReactable, Serializable {
 
     private double amount;
 

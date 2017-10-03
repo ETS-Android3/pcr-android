@@ -17,11 +17,11 @@ import com.example.vishaalprasad.pcrapp.reactant_helpers.ForwardPrimerReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrQuantity;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrReactable;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PolymeraseReactant;
-import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactantAdapter;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactionVolume;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReversePrimerReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.TemplateReactant;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
 
     private static final String TAG = "PcrActivity";
 
-    private static final int RESULT_SETTINGS = 1001;
+    private static final int REQUEST_STOCK_CONCENTRATIONS = 1001;
 
     // Views
     private Button calculateBtn;
@@ -42,9 +42,6 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pcr);
-
-        reactables = new ArrayList<>();
-        reactantAdapter = new ReactantAdapter(reactables);
 
         initializeDefaultReactants();
         initialize();
@@ -64,8 +61,9 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         switch (item.getItemId()) {
             case R.id.pcr_menu_stock:
 
-                Intent settingsIntent = new Intent(this, SettingsActivity.class);
-                startActivityForResult(settingsIntent, RESULT_SETTINGS);
+                Intent stockConcentrationIntent = new Intent(this, StockConcentrationActivity.class);
+                stockConcentrationIntent.putExtra(StockConcentrationActivity.KEY_REACTABLE_LIST_INTENT, (Serializable) reactables);
+                startActivityForResult(stockConcentrationIntent, REQUEST_STOCK_CONCENTRATIONS);
 
             default:
                 break;
@@ -78,18 +76,17 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         switch (requestCode) {
-            case RESULT_SETTINGS:
+            case REQUEST_STOCK_CONCENTRATIONS:
 
-                // TODO: 9/29/17 implement this                  
-
-//                getStockConcentrations();
-
+                if (resultCode == RESULT_OK) {
+                    reactables = (List<PcrReactable>) data.getExtras().getSerializable(StockConcentrationActivity.KEY_REACTABLE_LIST_RESULT);
+                    reactantAdapter.setItems(reactables);
+                }
                 break;
 
             default:
                 break;
         }
-
     }
 
     private void initialize() {
@@ -97,11 +94,14 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         calculateBtn.setOnClickListener(this);
         reactantsRecyclerView = (RecyclerView) findViewById(R.id.pcr_act_recycler_view);
 
+        reactantAdapter = new ReactantAdapter(reactables);
+
         reactantsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         reactantsRecyclerView.setAdapter(reactantAdapter);
     }
 
     private void initializeDefaultReactants() {
+        reactables = new ArrayList<>();
         reactables.add(new DntpReactant());
         reactables.add(new BufferReactant());
         reactables.add(new PolymeraseReactant());
@@ -109,7 +109,6 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         ForwardPrimerReactant forwardPrimerReactant = new ForwardPrimerReactant();
         reactables.add(forwardPrimerReactant);
         reactables.add(new ReversePrimerReactant(forwardPrimerReactant));
-
         reactables.add(new ReactionVolume());
         reactables.add(new PcrQuantity());
     }

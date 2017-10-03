@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class BufferReactant extends ConcentrationReactant implements Serializable {
 
     @Override
-    String getName(Resources res) {
+    public String getName(Resources res) {
         return res.getString(R.string.buffer);
     }
 

@@ -1,13 +1,15 @@
-package com.example.vishaalprasad.pcrapp.reactant_helpers;
+package com.example.vishaalprasad.pcrapp;
 
 import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.method.CharacterPickerDialog;
 import android.text.method.QwertyKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,8 +17,13 @@ import android.widget.TextView;
 
 import com.example.vishaalprasad.pcrapp.PcrApplication;
 import com.example.vishaalprasad.pcrapp.R;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrQuantity;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrReactable;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.Reactant;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactionVolume;
 
 import java.util.List;
+import java.util.concurrent.Exchanger;
 
 /**
  * Recycler View Adapter to be used with {@link Reactant}
@@ -57,7 +64,7 @@ public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         switch (getItemViewType(position)) {
             case ITEM_TYPE_REACTANT:
@@ -75,14 +82,32 @@ public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        reactant.setAmount(Float.valueOf(s.toString()));
+                        try {
+                            reactant.setAmount(Float.valueOf(s.toString()));
+                        } catch (Exception e) {
+                            reactant.setAmount(0f);
+                        }
                     }
                 });
 
                 ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(PcrApplication.getContext(),
                         R.layout.spinner_textview, reactant.getPossibleUnitNames(PcrApplication.getContext().getResources()));
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
                 reactantViewHolder.unitSpinner.setAdapter(adapter);
+                reactantViewHolder.unitSpinner.setSelection(adapter.getPosition(
+                        reactant.getUnit().getDisplayName(PcrApplication.getContext().getResources())));
+
+                reactantViewHolder.unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        reactant.setUnit(reactant.getPossibleUnits().get(position));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) { /* do nothing */ }
+                });
+
                 break;
 
             case ITEM_TYPE_VOLUME:
@@ -99,7 +124,11 @@ public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        reactionVolume.setAmount(Float.valueOf(s.toString()));
+                        try {
+                            reactionVolume.setAmount(Float.valueOf(s.toString()));
+                        } catch (NumberFormatException e) {
+                            reactionVolume.setAmount(0f);
+                        }
                     }
                 });
 
@@ -119,7 +148,11 @@ public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                     @Override
                     public void afterTextChanged(Editable s) {
-                        pcrQuantity.setQuantity(Integer.valueOf(s.toString()));
+                        try {
+                            pcrQuantity.setQuantity(Integer.valueOf(s.toString()));
+                        } catch (NumberFormatException e) {
+                            pcrQuantity.setQuantity(1);
+                        }
                     }
                 });
 

@@ -19,7 +19,7 @@
         <activity android:name=".DisplayPcrResultActivity" />
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".StockConcentrationActivity"
             android:label="@string/pref_stock_conc_title"
             android:parentActivityName=".PcrActivity">
             <meta-data

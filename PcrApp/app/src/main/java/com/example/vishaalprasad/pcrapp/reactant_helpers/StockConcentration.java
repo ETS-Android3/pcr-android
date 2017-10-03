@@ -7,6 +7,26 @@ import java.io.Serializable;
  */
 public class StockConcentration implements Serializable {
 
+    private double amount;
+    private UnitHelper.Unit unit;
 
+    public StockConcentration(UnitHelper.Unit unit) {
+        this.unit = unit;
+    }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public UnitHelper.Unit getUnit() {
+        return unit;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setUnit(UnitHelper.Unit unit) {
+        this.unit = unit;
+    }
 }

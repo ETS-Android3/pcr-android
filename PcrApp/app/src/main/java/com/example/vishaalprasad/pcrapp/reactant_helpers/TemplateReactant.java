@@ -13,7 +13,7 @@ import java.util.List;
 public class TemplateReactant extends Reactant implements Serializable {
 
     @Override
-    List<? extends Unit> getPossibleUnits() {
+    public List<? extends Unit> getPossibleUnits() {
         return Arrays.asList(VolumeUnit.values());
     }
 
@@ -24,7 +24,7 @@ public class TemplateReactant extends Reactant implements Serializable {
     }
 
     @Override
-    String getName(Resources res) {
+    public String getName(Resources res) {
         return res.getString(R.string.template);
     }
 }

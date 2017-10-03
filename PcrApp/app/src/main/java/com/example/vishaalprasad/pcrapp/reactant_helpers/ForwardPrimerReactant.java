@@ -19,7 +19,7 @@ public class ForwardPrimerReactant extends ConcentrationReactant implements Seri
     }
 
     @Override
-    String getName(Resources res) {
+    public String getName(Resources res) {
         return res.getString(R.string.forward_primer);
     }
 }

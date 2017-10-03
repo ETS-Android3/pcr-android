@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.example.vishaalprasad.pcrapp.R;
 
+import java.io.Serializable;
+
 /**
  * Helps differentiate which type of unit
  */
@@ -16,14 +18,14 @@ public class UnitHelper {
     /**
      * Implementation of Unit will only be enumerators
      */
-    interface Unit {
+    public interface Unit {
         String getDisplayName(Resources res);
     }
 
     /**
      * Group of units only to be used with concentration reactants
      */
-    enum ConcentrationUnit implements Unit {
+    public enum ConcentrationUnit implements Unit {
         NANO_MOLAR, MICRO_MOLAR, MILLI_MOLAR, PER_X;
 
         public String getDisplayName(Resources res) {
@@ -31,7 +33,7 @@ public class UnitHelper {
                 case NANO_MOLAR:
                     return res.getString(R.string.unit_nanomolar_string);
                 case MICRO_MOLAR:
-                    return res.getString(R.string.unit_nanomolar_string);
+                    return res.getString(R.string.unit_micromolar_string);
                 case MILLI_MOLAR:
                     return res.getString(R.string.unit_millimolar_string);
                 case PER_X:
@@ -46,7 +48,7 @@ public class UnitHelper {
     /**
      * Group of units only to be used with volume reactants
      */
-    enum VolumeUnit implements Unit {
+    public enum VolumeUnit implements Unit {
         MICRO_LITER;
 
         @Override

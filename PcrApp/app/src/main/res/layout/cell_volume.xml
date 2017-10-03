@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="55"
         android:fontFamily="sans-serif-condensed"
-        android:hint="@string/hint_enter_value"
+        android:hint="@string/enter_reaction_volume"
         android:inputType="numberDecimal"
         android:textSize="@dimen/main_text_size" />
 

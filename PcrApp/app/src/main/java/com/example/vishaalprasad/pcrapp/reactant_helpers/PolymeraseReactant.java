@@ -16,7 +16,7 @@ import java.util.List;
 public class PolymeraseReactant extends ConcentrationReactant implements Serializable {
 
     @Override
-    List<? extends UnitHelper.Unit> getPossibleUnits() {
+    public List<? extends UnitHelper.Unit> getPossibleUnits() {
         List<UnitHelper.Unit> possibleUnits = new ArrayList<>();
         possibleUnits.addAll(super.getPossibleUnits());
         possibleUnits.addAll(Arrays.asList(PolymeraseUnit.values()));
@@ -30,8 +30,18 @@ public class PolymeraseReactant extends ConcentrationReactant implements Seriali
     }
 
     @Override
-    String getName(Resources res) {
+    public String getName(Resources res) {
         return res.getString(R.string.polymerase);
+    }
+
+    @Override
+    public List<? extends UnitHelper.Unit> getPossibleStockConcUnits() {
+
+        if (getUnit() == PolymeraseUnit.UNIT_PER_REACTION) {
+            return Arrays.asList(PolymeraseStockConcUnit.UNITS_PER_MICROLITER);
+        } else {
+            return super.getPossibleStockConcUnits();
+        }
     }
 
     enum PolymeraseUnit implements UnitHelper.Unit {UNIT_PER_REACTION;
@@ -39,6 +49,14 @@ public class PolymeraseReactant extends ConcentrationReactant implements Seriali
         @Override
         public String getDisplayName(Resources res) {
             return res.getString(R.string.unit_per_reaction);
+        }
+    }
+
+    enum PolymeraseStockConcUnit implements UnitHelper.Unit {UNITS_PER_MICROLITER;
+
+        @Override
+        public String getDisplayName(Resources res) {
+            return res.getString(R.string.unit_per_microliter);
         }
     }
 }
