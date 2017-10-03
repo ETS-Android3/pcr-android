@@ -42,7 +42,8 @@ public abstract class Reactant implements PcrReactable, Serializable {
         return names;
     }
 
-    abstract double getFinalValueInMicroMolar();
+    abstract double getFinalValueInMicroMolar(ReactionVolume reactionVolume)
+            throws MissingStockConcentrationException, UnitMismatchException;
 
     public void setAmount(double amount) {
         this.amount = amount;

@@ -24,9 +24,22 @@ public class PolymeraseReactant extends ConcentrationReactant implements Seriali
     }
 
     @Override
-    double getFinalValueInMicroMolar() {
-        // TODO: 9/26/17 implement this
-        return 0d;
+    double getFinalValueInMicroMolar(ReactionVolume reactionVolume)
+            throws MissingStockConcentrationException, UnitMismatchException {
+
+        if (getUnit() instanceof PolymeraseUnit) {
+
+            if (getStockConcentration() == null) {
+                throw new MissingStockConcentrationException();
+            }
+
+            if (!(getStockConcentration().getUnit() instanceof PolymeraseStockConcUnit)) {
+                throw new UnitMismatchException();
+            }
+
+            return getAmount() / getStockConcentration().getAmount();
+
+        } else return super.getFinalValueInMicroMolar(reactionVolume);
     }
 
     @Override

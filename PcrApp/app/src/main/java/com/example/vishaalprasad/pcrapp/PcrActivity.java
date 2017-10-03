@@ -1,5 +1,7 @@
 package com.example.vishaalprasad.pcrapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,12 +16,15 @@ import android.widget.Button;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.BufferReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.DntpReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ForwardPrimerReactant;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.MissingStockConcentrationException;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrEngine;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrQuantity;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrReactable;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PolymeraseReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactionVolume;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReversePrimerReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.TemplateReactant;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.UnitMismatchException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -120,15 +125,36 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.pcr_act_calculate_btn:
 
                 // engine -- calculation
-//                PcrEngine.calculatePcr(reactables, quantity, volume);
-
-                // send results to results screen
+                try {
+                    
+                    PcrEngine.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 1));
+                    
+                    // TODO: 10/2/17 show the list (new screen)
+                    
+                } catch (UnitMismatchException e) {
+                    errorDialog(getString(R.string.error_mismatch));
+                } catch (MissingStockConcentrationException e1) {
+                    errorDialog(getString(R.string.missing_stock_concentration));
+                }
 
                 break;
-
 
             default:
                 break;
         }
+    }
+
+    private void errorDialog(String message) {
+
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.app_name)
+                .setMessage(message)
+                .setNeutralButton(R.string.okay, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
     }
 }

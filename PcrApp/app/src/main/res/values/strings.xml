@@ -24,6 +24,10 @@
     <string name="hint_enter_value">Enter Value</string>
     <string name="custom_reactant">Custom reactant</string>
     <string name="pcr_menu_stock_conc">Stock</string>
+    <string name="calc_error">Calculation Error</string>
+    <string name="error_title_dialog">Calculation Error</string>
+    <string name="error_missing_stock">Please open the Stock Concentration screen and make sure all Stock Concentrations are entered.</string>
+    <string name="error_mismatch">Please make sure the units for the Stock Concentration agree with the units for each reactant.</string>
 
     <!--Display Result-->
     <string name="per_tube">Per Tube</string>
@@ -40,6 +44,7 @@
     <string name="missing_stock_concentration">Tap to set stock concentration</string>
 
     <!--Misc-->
+    <string name="okay">Okay</string>
     <string name="done">Done</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>

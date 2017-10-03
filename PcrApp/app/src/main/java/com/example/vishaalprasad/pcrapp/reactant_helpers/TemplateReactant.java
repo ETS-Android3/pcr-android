@@ -18,9 +18,10 @@ public class TemplateReactant extends Reactant implements Serializable {
     }
 
     @Override
-    public double getFinalValueInMicroMolar() {
-        // TODO: 9/26/17 implement this
-        return 0d;
+    public double getFinalValueInMicroMolar(ReactionVolume reactionVolume) {
+
+        return getAmount();
+
     }
 
     @Override

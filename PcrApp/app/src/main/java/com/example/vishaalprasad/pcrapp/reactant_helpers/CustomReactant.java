@@ -17,9 +17,15 @@ public class CustomReactant extends ConcentrationReactant implements Serializabl
     }
 
     @Override
-    double getFinalValueInMicroMolar() {
-        // TODO: 9/26/17 implement this
-        return 0d;
+    double getFinalValueInMicroMolar(ReactionVolume reactionVolume)
+            throws UnitMismatchException, MissingStockConcentrationException {
+
+        if (getUnit() instanceof UnitHelper.VolumeUnit) {
+
+            return getAmount();
+
+        } else return super.getFinalValueInMicroMolar(reactionVolume);
+
     }
 
     @Override

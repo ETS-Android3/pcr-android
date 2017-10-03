@@ -17,9 +17,4 @@ public class BufferReactant extends ConcentrationReactant implements Serializabl
         return res.getString(R.string.buffer);
     }
 
-    @Override
-    double getFinalValueInMicroMolar() {
-        // TODO: 9/26/17 implement this
-        return 0d;
-    }
 }

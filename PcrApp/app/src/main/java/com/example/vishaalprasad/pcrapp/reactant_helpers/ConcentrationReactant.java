@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.example.vishaalprasad.pcrapp.reactant_helpers.UnitHelper.ConcentrationUnit.NANO_MOLAR;
+
 /**
  * Special type of Reactant that may have a Stock Concentration
  * Stock concentration will not be used (or needed) if Reactant's unit is set to PER_X
@@ -31,13 +33,41 @@ public abstract class ConcentrationReactant extends Reactant implements Serializ
     }
 
     @Override
+    double getFinalValueInMicroMolar(ReactionVolume reactionVolume)
+            throws MissingStockConcentrationException, UnitMismatchException {
+
+        ConcentrationUnit concentrationUnit = (ConcentrationUnit) getUnit();
+        double initialInMicroMolar = PcrEngine.toMicroMolar(getAmount(), (ConcentrationUnit) getUnit());
+
+        switch (concentrationUnit) {
+
+            case NANO_MOLAR:
+            case MICRO_MOLAR:
+            case MILLI_MOLAR:
+
+                if (stockConcentration == null) {
+                    throw new MissingStockConcentrationException();
+                }
+
+                double stockInMicroMolar = PcrEngine.toMicroMolar(stockConcentration.getAmount(),
+                        (ConcentrationUnit) stockConcentration.getUnit());
+
+                return initialInMicroMolar * reactionVolume.getAmount() / stockInMicroMolar;
+
+            default:
+
+                return reactionVolume.getAmount() / initialInMicroMolar;
+        }
+    }
+
+    @Override
     public void setUnit(UnitHelper.Unit unit) {
         super.setUnit(unit);
 
         // current stock concentration is not compatible, drop it
         if (stockConcentration != null
                 && (getPossibleStockConcUnits() == null
-                    || !getPossibleStockConcUnits().contains(stockConcentration.getUnit()))) {
+                || !getPossibleStockConcUnits().contains(stockConcentration.getUnit()))) {
 
             stockConcentration = null;
         }
@@ -52,9 +82,9 @@ public abstract class ConcentrationReactant extends Reactant implements Serializ
 
         if (getUnit() == ConcentrationUnit.MILLI_MOLAR
                 || getUnit() == ConcentrationUnit.MICRO_MOLAR
-                || getUnit() == ConcentrationUnit.NANO_MOLAR) {
+                || getUnit() == NANO_MOLAR) {
 
-            return Arrays.asList(ConcentrationUnit.MILLI_MOLAR, ConcentrationUnit.MICRO_MOLAR, ConcentrationUnit.NANO_MOLAR);
+            return Arrays.asList(ConcentrationUnit.MILLI_MOLAR, ConcentrationUnit.MICRO_MOLAR, NANO_MOLAR);
         }
 
         return null;
