@@ -66,7 +66,7 @@ public class PcrEngine {
                 return value * 1_000;
 
             default:
-                return -1;
+                return value;
         }
     }
 }
