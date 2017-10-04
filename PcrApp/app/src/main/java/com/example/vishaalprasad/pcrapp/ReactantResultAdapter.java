@@ -31,21 +31,20 @@ public class ReactantResultAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         notifyDataSetChanged();
     }
 
-
     @Override
     public int getItemCount() {
         return this.items.size();
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         
-        final PcrResult pcrResult = items.get(position);
+        PcrResult pcrResult = items.get(position);
         ResultViewHolder reactantViewHolder = (ResultViewHolder) holder;
 
         Resources res = PcrApplication.getContext().getResources();
 
-        reactantViewHolder.titleTextView.setText(pcrResult.getReactant().getName(res));
+        reactantViewHolder.titleTextView.setText(pcrResult.getName());
         reactantViewHolder.perTubeTextView.setText(res.getString(R.string.result_unit_microliter_string, pcrResult.getPerTube()));
         reactantViewHolder.masterMixTextView.setText(res.getString(R.string.result_unit_microliter_string, pcrResult.getPerTube() * reactionQuantity));
     }

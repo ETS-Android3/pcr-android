@@ -139,7 +139,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
 
                     Intent resultActivityIntent = new Intent(this, PcrResultActivity.class);
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_REACTABLE_LIST, (Serializable)
-                            PcrEngine.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 2)));
+                            PcrEngine.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 2), getResources()));
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_VOLUME, ((ReactionVolume) reactables.get(reactables.size() - 2)).getAmount());
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_QUANTITY, ((PcrQuantity) reactables.get(reactables.size() - 1)).getQuantity());
                     startActivity(resultActivityIntent);

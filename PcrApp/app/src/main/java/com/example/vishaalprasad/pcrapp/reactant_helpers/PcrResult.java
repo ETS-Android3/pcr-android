@@ -9,28 +9,22 @@ import java.io.Serializable;
  */
 public class PcrResult implements Serializable {
 
-    private Reactant reactant;
-
+    private String name;
     private double perTube;
 
     public double getPerTube() {
         return perTube;
     }
 
-    /**
-     * Get the original reactant
-     *
-     * @return a reference to the original {@link Reactant}, null in the case of water
-     */
-    @Nullable public Reactant getReactant() {
-        return reactant;
-    }
-
     public void setPerTube(double perTube) {
         this.perTube = perTube;
     }
 
-    public void setReactant(Reactant reactant) {
-        this.reactant = reactant;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

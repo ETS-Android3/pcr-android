@@ -39,7 +39,7 @@ public class PcrResultActivity extends AppCompatActivity {
         initializeAndShowResults();
     }
 
-    private void getData(){
+    private void getData() {
         pcrResults = (List<PcrResult>) getIntent().getSerializableExtra(KEY_REACTABLE_LIST);
 
         reactionVolume = getIntent().getDoubleExtra(KEY_RACTION_VOLUME, 0d);

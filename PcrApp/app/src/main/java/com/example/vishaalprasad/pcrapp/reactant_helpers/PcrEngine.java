@@ -1,5 +1,9 @@
 package com.example.vishaalprasad.pcrapp.reactant_helpers;
 
+import android.content.res.Resources;
+
+import com.example.vishaalprasad.pcrapp.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +24,9 @@ public class PcrEngine {
      * @param reactionVolume Total volume of reaction
      * @return A List of {@link PcrResult} Objects containing the amounts of each Reactant
      */
-    public static List<PcrResult> calculatePcr(List<PcrReactable> reactants, ReactionVolume reactionVolume)
+    public static List<PcrResult> calculatePcr(List<PcrReactable> reactants,
+                                               ReactionVolume reactionVolume,
+                                               Resources res)
             throws MissingStockConcentrationException, UnitMismatchException {
 
         List<PcrResult> results = new ArrayList<>();
@@ -32,18 +38,19 @@ public class PcrEngine {
             Reactant reactant = (Reactant) reactable;
 
             PcrResult result = new PcrResult();
-            result.setReactant(reactant);
+            result.setName(reactant.getName(res));
 
             double finalValue = reactant.getFinalValueInMicroMolar(reactionVolume);
             result.setPerTube(finalValue);
 
-            results.add(new PcrResult());
+            results.add(result);
             reactantSum += finalValue;
         }
 
         double waterAmount = reactionVolume.getAmount() - reactantSum;
         PcrResult waterResult = new PcrResult();
         waterResult.setPerTube(waterAmount);
+        waterResult.setName(res.getString(R.string.water));
 
         return results;
     }
