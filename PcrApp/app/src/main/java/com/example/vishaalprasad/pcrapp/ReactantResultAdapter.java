@@ -1,10 +1,12 @@
 package com.example.vishaalprasad.pcrapp;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrResult;
@@ -22,7 +24,7 @@ public class ReactantResultAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private int reactionQuantity;
 
     public ReactantResultAdapter(List<PcrResult> items, int reactionQuantity) {
-        setItems(items,reactionQuantity);
+        setItems(items, reactionQuantity);
     }
 
     public void setItems(List<PcrResult> items, int reactionQuantity) {
@@ -38,7 +40,7 @@ public class ReactantResultAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        
+
         PcrResult pcrResult = items.get(position);
         ResultViewHolder reactantViewHolder = (ResultViewHolder) holder;
 
@@ -47,6 +49,12 @@ public class ReactantResultAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         reactantViewHolder.titleTextView.setText(pcrResult.getName());
         reactantViewHolder.perTubeTextView.setText(res.getString(R.string.result_unit_microliter_string, pcrResult.getPerTube()));
         reactantViewHolder.masterMixTextView.setText(res.getString(R.string.result_unit_microliter_string, pcrResult.getPerTube() * reactionQuantity));
+
+        if (position % 2 == 0) {
+            reactantViewHolder.background.setBackgroundColor(Color.WHITE);
+        } else {
+            reactantViewHolder.background.setBackgroundColor(res.getColor(R.color.light_green));
+        }
     }
 
     @Override
@@ -56,6 +64,7 @@ public class ReactantResultAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     public class ResultViewHolder extends RecyclerView.ViewHolder {
 
+        private LinearLayout background;
         private TextView titleTextView;
         private TextView perTubeTextView;
         private TextView masterMixTextView;
@@ -63,6 +72,7 @@ public class ReactantResultAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public ResultViewHolder(View itemView) {
             super(itemView);
 
+            background = (LinearLayout) itemView.findViewById(R.id.cell_result_background);
             titleTextView = (TextView) itemView.findViewById(R.id.cell_result_reactant_title);
             perTubeTextView = (TextView) itemView.findViewById(R.id.cell_result_reactant_per_tube);
             masterMixTextView = (TextView) itemView.findViewById(R.id.cell_result_reactant_master_mix);

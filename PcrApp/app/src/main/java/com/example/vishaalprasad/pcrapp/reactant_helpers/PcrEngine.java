@@ -51,6 +51,7 @@ public class PcrEngine {
         PcrResult waterResult = new PcrResult();
         waterResult.setPerTube(waterAmount);
         waterResult.setName(res.getString(R.string.water));
+        results.add(waterResult);
 
         return results;
     }
@@ -65,7 +66,6 @@ public class PcrEngine {
     public static double toMicroMolar(double value, UnitHelper.ConcentrationUnit unit) {
 
         switch (unit) {
-
             case NANO_MOLAR:
                 return value / 1_000d;
 

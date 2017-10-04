@@ -1,7 +1,5 @@
 package com.example.vishaalprasad.pcrapp.reactant_helpers;
 
-import android.support.annotation.Nullable;
-
 import java.io.Serializable;
 
 /**

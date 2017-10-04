@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cell_result_background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal|center_vertical"
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="29"
         android:fontFamily="sans-serif-condensed"
-        android:gravity="left"
+        android:gravity="center"
         android:inputType="number"
         android:padding="2dp"
         android:textColor="@android:color/black"
