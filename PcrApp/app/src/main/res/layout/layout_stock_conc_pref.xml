@@ -26,7 +26,7 @@
 
     <Spinner
         android:id="@+id/pref_stock_conc_unit"
-        android:layout_width="84dp"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/pref_stock_conc_input"

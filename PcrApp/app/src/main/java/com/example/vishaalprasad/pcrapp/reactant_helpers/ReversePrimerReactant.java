@@ -21,6 +21,10 @@ public class ReversePrimerReactant extends Reactant implements Serializable {
         this.forwardPrimerReference = forwardPrimerReactant;
     }
 
+    public void setForwardPrimerReference(ForwardPrimerReactant forwardPrimerReference) {
+        this.forwardPrimerReference = forwardPrimerReference;
+    }
+
     @Override
     public List<? extends UnitHelper.Unit> getPossibleUnits() {
         return forwardPrimerReference.getPossibleUnits();
@@ -41,7 +45,7 @@ public class ReversePrimerReactant extends Reactant implements Serializable {
             case MILLI_MOLAR:
 
                 if (stockConcentration == null) {
-                    throw new MissingStockConcentrationException();
+                    throw new MissingStockConcentrationException(this);
                 }
 
                 double stockInMicroMolar = PcrEngine.toMicroMolar(stockConcentration.getAmount(),

@@ -1,11 +1,8 @@
 package com.example.vishaalprasad.pcrapp;
 
-import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.CharacterPickerDialog;
-import android.text.method.QwertyKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,22 +12,19 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.vishaalprasad.pcrapp.PcrApplication;
-import com.example.vishaalprasad.pcrapp.R;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrQuantity;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrReactable;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.Reactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactionVolume;
 
 import java.util.List;
-import java.util.concurrent.Exchanger;
 
 /**
  * Recycler View Adapter to be used with {@link Reactant}
  */
-public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ReactableAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final String TAG = "ReactantAdapter";
+    private static final String TAG = "ReactableAdapter";
 
     private static final int ITEM_TYPE_REACTANT = 1;
     private static final int ITEM_TYPE_VOLUME = 2;
@@ -38,7 +32,7 @@ public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private List<PcrReactable> items;
 
-    public ReactantAdapter(List<PcrReactable> items) {
+    public ReactableAdapter(List<PcrReactable> items) {
         setItems(items);
     }
 
@@ -92,7 +86,7 @@ public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                 ArrayAdapter<CharSequence> adapter = new ArrayAdapter<>(PcrApplication.getContext(),
                         R.layout.spinner_textview, reactant.getPossibleUnitNames(PcrApplication.getContext().getResources()));
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                adapter.setDropDownViewResource(R.layout.spinner_textview);
 
                 reactantViewHolder.unitSpinner.setAdapter(adapter);
                 reactantViewHolder.unitSpinner.setSelection(adapter.getPosition(
@@ -168,13 +162,13 @@ public class ReactantAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         switch (viewType) {
             case ITEM_TYPE_REACTANT:
-                return new ReactantViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_reactant, parent, false));
+                return new ReactantViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_input_reactant, parent, false));
 
             case ITEM_TYPE_VOLUME:
-                return new VolumeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_volume, parent, false));
+                return new VolumeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_input_volume, parent, false));
 
             case ITEM_TYPE_QUANTITY:
-                return new QuantityViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_quantity, parent, false));
+                return new QuantityViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cell_input_quantity, parent, false));
 
             default:
                 return null;

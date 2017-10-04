@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -41,7 +42,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     private RecyclerView reactantsRecyclerView;
 
     private List<PcrReactable> reactables;
-    private ReactantAdapter reactantAdapter;
+    private ReactableAdapter reactantAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +87,15 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                 if (resultCode == RESULT_OK) {
                     reactables = (List<PcrReactable>) data.getExtras().getSerializable(StockConcentrationActivity.KEY_REACTABLE_LIST_RESULT);
                     reactantAdapter.setItems(reactables);
+
+                    ForwardPrimerReactant forwardPrimerReactant = null;
+                    ReversePrimerReactant reversePrimerReactant = null;
+                    for (PcrReactable reactable : reactables) {
+                        if (reactable instanceof ForwardPrimerReactant) forwardPrimerReactant = (ForwardPrimerReactant) reactable;
+
+                        else if (reactable instanceof ReversePrimerReactant) reversePrimerReactant = (ReversePrimerReactant) reactable;
+                    }
+                    reversePrimerReactant.setForwardPrimerReference(forwardPrimerReactant);
                 }
                 break;
 
@@ -99,7 +109,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         calculateBtn.setOnClickListener(this);
         reactantsRecyclerView = (RecyclerView) findViewById(R.id.pcr_act_recycler_view);
 
-        reactantAdapter = new ReactantAdapter(reactables);
+        reactantAdapter = new ReactableAdapter(reactables);
 
         reactantsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         reactantsRecyclerView.setAdapter(reactantAdapter);
@@ -126,15 +136,19 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
 
                 // engine -- calculation
                 try {
-                    
-                    PcrEngine.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 1));
-                    
-                    // TODO: 10/2/17 show the list (new screen)
+
+                    Intent resultActivityIntent = new Intent(this, PcrResultActivity.class);
+                    resultActivityIntent.putExtra(PcrResultActivity.KEY_REACTABLE_LIST, (Serializable)
+                            PcrEngine.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 2)));
+                    resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_VOLUME, ((ReactionVolume) reactables.get(reactables.size() - 2)).getAmount());
+                    resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_QUANTITY, ((PcrQuantity) reactables.get(reactables.size() - 1)).getQuantity());
+                    startActivity(resultActivityIntent);
                     
                 } catch (UnitMismatchException e) {
                     errorDialog(getString(R.string.error_mismatch));
                 } catch (MissingStockConcentrationException e1) {
-                    errorDialog(getString(R.string.missing_stock_concentration));
+                    Log.e(TAG, "PcrEngine - ", e1);
+                    errorDialog(getString(R.string.error_missing_stock));
                 }
 
                 break;

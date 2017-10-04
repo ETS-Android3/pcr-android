@@ -46,7 +46,7 @@ public abstract class ConcentrationReactant extends Reactant implements Serializ
             case MILLI_MOLAR:
 
                 if (stockConcentration == null) {
-                    throw new MissingStockConcentrationException();
+                    throw new MissingStockConcentrationException(this);
                 }
 
                 double stockInMicroMolar = PcrEngine.toMicroMolar(stockConcentration.getAmount(),

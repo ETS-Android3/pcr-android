@@ -16,7 +16,7 @@
 
         <activity android:name=".TmCalcActivity" />
 
-        <activity android:name=".DisplayPcrResultActivity" />
+        <activity android:name=".PcrResultActivity" />
 
         <activity
             android:name=".StockConcentrationActivity"

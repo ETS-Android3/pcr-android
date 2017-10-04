@@ -55,8 +55,10 @@
     <string name="unit_nanomolar_string">nM</string>
     <string name="unit_milliliter_string">mL</string>
     <string name="unit_microliter_string">μL</string>
-    <string name="unit_per_x_string">_x</string>
+    <string name="unit_per_x_string">_\u00D7</string>
     <string name="unit_per_reaction">u</string>
     <string name="unit_per_microliter">u/μL</string>
+    <string name="result_unit_multiplication">%d\u00D7</string>
+    <string name="result_unit_microliter_string">%.2fμL</string>
 
 </resources>

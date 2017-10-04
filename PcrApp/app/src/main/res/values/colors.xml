@@ -6,6 +6,6 @@
 
     <color name="mat_green">#4caf50</color>
     <color name="mat_action_amber">#ff6f00</color>
-    <color name="ripple_accent">#bbbbbb</color>
+    <color name="light_green">#b2dfdb</color>
 
 </resources>

@@ -30,7 +30,7 @@ public class PolymeraseReactant extends ConcentrationReactant implements Seriali
         if (getUnit() instanceof PolymeraseUnit) {
 
             if (getStockConcentration() == null) {
-                throw new MissingStockConcentrationException();
+                throw new MissingStockConcentrationException(this);
             }
 
             if (!(getStockConcentration().getUnit() instanceof PolymeraseStockConcUnit)) {

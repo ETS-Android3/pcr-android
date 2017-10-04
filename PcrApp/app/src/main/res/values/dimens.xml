@@ -10,6 +10,7 @@
     <!--text sizes-->
     <dimen name="main_text_size">16sp</dimen>
     <dimen name="large_text_size">18sp</dimen>
+    <dimen name="very_large_text_size">42sp</dimen>
 
     <dimen name="entry_title_width">150dp</dimen>
     <dimen name="entry_edittext_size">200dp</dimen>

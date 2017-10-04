@@ -53,5 +53,6 @@ public class StockConcentrationActivity extends PreferenceActivity {
 
         setResult(RESULT_OK, new Intent().putExtra(KEY_REACTABLE_LIST_RESULT, (Serializable) reactables));
         finish();
+
     }
 }

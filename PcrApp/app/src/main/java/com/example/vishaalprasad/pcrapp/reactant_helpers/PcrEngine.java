@@ -26,7 +26,7 @@ public class PcrEngine {
         List<PcrResult> results = new ArrayList<>();
 
         double reactantSum = 0d;
-        for (PcrReactable reactable: reactants) {
+        for (PcrReactable reactable : reactants) {
             if (!(reactable instanceof Reactant)) continue;
 
             Reactant reactant = (Reactant) reactable;
