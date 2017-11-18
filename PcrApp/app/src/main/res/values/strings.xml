@@ -23,6 +23,7 @@
     <string name="reverse_primer">Reverse Primer</string>
     <string name="hint_enter_value">Enter Value</string>
     <string name="custom_reactant">Custom reactant</string>
+    <string name="custom_reactant_dialog_message">Enter your custom reactant</string>
     <string name="pcr_menu_stock_conc">Stock</string>
     <string name="calc_error">Calculation Error</string>
     <string name="error_title_dialog">Calculation Error</string>
@@ -46,6 +47,7 @@
     <!--Misc-->
     <string name="okay">Okay</string>
     <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
 

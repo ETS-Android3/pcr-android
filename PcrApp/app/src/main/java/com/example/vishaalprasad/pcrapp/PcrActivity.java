@@ -13,8 +13,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.vishaalprasad.pcrapp.reactant_helpers.BufferReactant;
+import com.example.vishaalprasad.pcrapp.reactant_helpers.CustomReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.DntpReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ForwardPrimerReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.MissingStockConcentrationException;
@@ -38,7 +40,8 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     private static final int REQUEST_STOCK_CONCENTRATIONS = 1001;
 
     // Views
-    private Button calculateBtn;
+    private Button calculateButton;
+    private Button customReactantButton;
     private RecyclerView reactantsRecyclerView;
 
     private List<PcrReactable> reactables;
@@ -70,6 +73,12 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                 Intent stockConcentrationIntent = new Intent(this, StockConcentrationActivity.class);
                 stockConcentrationIntent.putExtra(StockConcentrationActivity.KEY_REACTABLE_LIST_INTENT, (Serializable) reactables);
                 startActivityForResult(stockConcentrationIntent, REQUEST_STOCK_CONCENTRATIONS);
+                break;
+
+            case R.id.pcr_act_custom_reactant:
+
+                createCustomReactant();
+                break;
 
             default:
                 break;
@@ -91,9 +100,13 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                     ForwardPrimerReactant forwardPrimerReactant = null;
                     ReversePrimerReactant reversePrimerReactant = null;
                     for (PcrReactable reactable : reactables) {
-                        if (reactable instanceof ForwardPrimerReactant) forwardPrimerReactant = (ForwardPrimerReactant) reactable;
 
-                        else if (reactable instanceof ReversePrimerReactant) reversePrimerReactant = (ReversePrimerReactant) reactable;
+                        if (reactable instanceof ForwardPrimerReactant) {
+                            forwardPrimerReactant = (ForwardPrimerReactant) reactable;
+
+                        } else if (reactable instanceof ReversePrimerReactant) {
+                            reversePrimerReactant = (ReversePrimerReactant) reactable;
+                        }
                     }
                     reversePrimerReactant.setForwardPrimerReference(forwardPrimerReactant);
                 }
@@ -105,8 +118,11 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initialize() {
-        calculateBtn = (Button) findViewById(R.id.pcr_act_calculate_btn);
-        calculateBtn.setOnClickListener(this);
+        calculateButton = (Button) findViewById(R.id.pcr_act_calculate_btn);
+        calculateButton.setOnClickListener(this);
+        customReactantButton = (Button) findViewById(R.id.pcr_act_custom_reactant);
+        customReactantButton.setOnClickListener(this);
+
         reactantsRecyclerView = (RecyclerView) findViewById(R.id.pcr_act_recycler_view);
 
         reactantAdapter = new ReactableAdapter(reactables);
@@ -157,6 +173,37 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                 break;
         }
     }
+
+    /**
+     * Allow the user to input a custom reactant
+     * To be used with the Custom Reactant button
+     */
+    private void createCustomReactant() {
+
+        EditText reactantNameEditText = new EditText(this);
+        reactantNameEditText.setHint(R.string.custom_reactant_dialog_message);
+
+
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.custom_reactant)
+                .setView(reactantNameEditText)
+                .setPositiveButton(R.string.done, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO: 11/18/17 implement create custom reactant
+
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+
+    }
+
 
     private void errorDialog(String message) {
 
