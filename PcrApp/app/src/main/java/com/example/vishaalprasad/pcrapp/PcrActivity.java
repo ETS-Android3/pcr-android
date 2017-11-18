@@ -75,11 +75,6 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                 startActivityForResult(stockConcentrationIntent, REQUEST_STOCK_CONCENTRATIONS);
                 break;
 
-            case R.id.pcr_act_custom_reactant:
-
-                createCustomReactant();
-                break;
-
             default:
                 break;
         }
@@ -159,7 +154,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_VOLUME, ((ReactionVolume) reactables.get(reactables.size() - 2)).getAmount());
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_QUANTITY, ((PcrQuantity) reactables.get(reactables.size() - 1)).getQuantity());
                     startActivity(resultActivityIntent);
-                    
+
 //                } catch (UnitMismatchException e) {
 //                    errorDialog(getString(R.string.error_mismatch));
 //                } catch (MissingStockConcentrationException e1) {
@@ -167,6 +162,11 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
 //                    errorDialog(getString(R.string.error_missing_stock));
 //                }
 
+                break;
+
+            case R.id.pcr_act_custom_reactant:
+
+                createCustomReactant();
                 break;
 
             default:
@@ -188,15 +188,11 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                 .setView(reactantNameEditText)
                 .setPositiveButton(R.string.done, (dialog, which) -> {
 
-
+                    reactables.add(reactables.size() - 2,
+                            new CustomReactant(reactantNameEditText.getText().toString()));
 
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
+                .setNegativeButton(R.string.cancel, ((dialog, which) -> dialog.dismiss()))
                 .show();
 
     }
