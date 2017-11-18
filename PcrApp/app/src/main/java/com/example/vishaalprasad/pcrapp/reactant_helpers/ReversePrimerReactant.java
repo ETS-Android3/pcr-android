@@ -34,7 +34,7 @@ public class ReversePrimerReactant extends Reactant implements Serializable {
     double getFinalValueInMicroMolar(ReactionVolume reactionVolume) throws MissingStockConcentrationException {
 
         UnitHelper.ConcentrationUnit concentrationUnit = (UnitHelper.ConcentrationUnit) getUnit();
-        double initialInMicroMolar = PcrEngine.toMicroMolar(getAmount(), (UnitHelper.ConcentrationUnit) getUnit());
+        double initialInMicroMolar = PcrEngine.Companion.toMicroMolar(getAmount(), (UnitHelper.ConcentrationUnit) getUnit());
 
         StockConcentration stockConcentration = forwardPrimerReference.getStockConcentration();
 
@@ -48,7 +48,7 @@ public class ReversePrimerReactant extends Reactant implements Serializable {
                     throw new MissingStockConcentrationException(this);
                 }
 
-                double stockInMicroMolar = PcrEngine.toMicroMolar(stockConcentration.getAmount(),
+                double stockInMicroMolar = PcrEngine.Companion.toMicroMolar(stockConcentration.getAmount(),
                         (UnitHelper.ConcentrationUnit) stockConcentration.getUnit());
 
                 return initialInMicroMolar * reactionVolume.getAmount() / stockInMicroMolar;
