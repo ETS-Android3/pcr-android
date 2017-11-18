@@ -1,8 +1,8 @@
 # PCR Assistant for Android 
 
-<img src="images/screenshot.png" width="500">
+An Android application to facilitate PCR calculations in the lab.  Enter custom reactants, stock concentrations, and all values in any unit.  Also features a TM Calculator. 
 
-An Android application to facilitate PCR calculations in the lab.  Enter custom reactants, stock concentrations, and all values in any unit.  Also comes with a TM Calculator! 
+<img src="images/screenshot.png" width="500">
 
 Coming soon to the Google Play Store 
 
