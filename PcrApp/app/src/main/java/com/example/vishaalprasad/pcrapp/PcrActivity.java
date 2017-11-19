@@ -75,11 +75,6 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                 startActivityForResult(stockConcentrationIntent, REQUEST_STOCK_CONCENTRATIONS);
                 break;
 
-            case R.id.pcr_act_custom_reactant:
-
-                createCustomReactant();
-                break;
-
             default:
                 break;
         }
@@ -151,22 +146,27 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
             case R.id.pcr_act_calculate_btn:
 
                 // engine -- calculation
-                try {
+//                try {
 
                     Intent resultActivityIntent = new Intent(this, PcrResultActivity.class);
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_REACTABLE_LIST, (Serializable)
-                            PcrEngine.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 2), getResources()));
+                            PcrEngine.Companion.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 2), getResources()));
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_VOLUME, ((ReactionVolume) reactables.get(reactables.size() - 2)).getAmount());
                     resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_QUANTITY, ((PcrQuantity) reactables.get(reactables.size() - 1)).getQuantity());
                     startActivity(resultActivityIntent);
-                    
-                } catch (UnitMismatchException e) {
-                    errorDialog(getString(R.string.error_mismatch));
-                } catch (MissingStockConcentrationException e1) {
-                    Log.e(TAG, "PcrEngine - ", e1);
-                    errorDialog(getString(R.string.error_missing_stock));
-                }
 
+//                } catch (UnitMismatchException e) {
+//                    errorDialog(getString(R.string.error_mismatch));
+//                } catch (MissingStockConcentrationException e1) {
+//                    Log.e(TAG, "PcrEngine - ", e1);
+//                    errorDialog(getString(R.string.error_missing_stock));
+//                }
+
+                break;
+
+            case R.id.pcr_act_custom_reactant:
+
+                createCustomReactant();
                 break;
 
             default:
@@ -183,23 +183,16 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         EditText reactantNameEditText = new EditText(this);
         reactantNameEditText.setHint(R.string.custom_reactant_dialog_message);
 
-
         new AlertDialog.Builder(this)
                 .setTitle(R.string.custom_reactant)
                 .setView(reactantNameEditText)
-                .setPositiveButton(R.string.done, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO: 11/18/17 implement create custom reactant
+                .setPositiveButton(R.string.done, (dialog, which) -> {
 
-                    }
+                    reactables.add(reactables.size() - 2,
+                            new CustomReactant(reactantNameEditText.getText().toString()));
+
                 })
-                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
+                .setNegativeButton(R.string.cancel, ((dialog, which) -> dialog.dismiss()))
                 .show();
 
     }
@@ -210,12 +203,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         new AlertDialog.Builder(this)
                 .setTitle(R.string.app_name)
                 .setMessage(message)
-                .setNeutralButton(R.string.okay, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
+                .setNeutralButton(R.string.okay, (dialog, which) -> dialog.dismiss())
                 .show();
     }
 }

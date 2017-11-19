@@ -37,7 +37,7 @@ public abstract class ConcentrationReactant extends Reactant implements Serializ
             throws MissingStockConcentrationException, UnitMismatchException {
 
         ConcentrationUnit concentrationUnit = (ConcentrationUnit) getUnit();
-        double initialInMicroMolar = PcrEngine.toMicroMolar(getAmount(), (ConcentrationUnit) getUnit());
+        double initialInMicroMolar = PcrEngine.Companion.toMicroMolar(getAmount(), (ConcentrationUnit) getUnit());
 
         switch (concentrationUnit) {
 
@@ -49,7 +49,7 @@ public abstract class ConcentrationReactant extends Reactant implements Serializ
                     throw new MissingStockConcentrationException(this);
                 }
 
-                double stockInMicroMolar = PcrEngine.toMicroMolar(stockConcentration.getAmount(),
+                double stockInMicroMolar = PcrEngine.Companion.toMicroMolar(stockConcentration.getAmount(),
                         (ConcentrationUnit) stockConcentration.getUnit());
 
                 return initialInMicroMolar * reactionVolume.getAmount() / stockInMicroMolar;
