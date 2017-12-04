@@ -11,9 +11,7 @@ import android.widget.Spinner;
 
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ConcentrationReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.StockConcentration;
-import com.example.vishaalprasad.pcrapp.reactant_helpers.UnitHelper;
 
-import java.util.List;
 import java.util.Locale;
 
 public class StockConcentrationDialogPreference extends DialogPreference {

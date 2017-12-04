@@ -9,13 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrResult;
-import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactionVolume;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindFont;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -30,9 +27,7 @@ public class PcrResultActivity extends AppCompatActivity {
     private double reactionVolume;
 
     @BindView(R.id.act_result_quantity) TextView quantityTextView;
-
     @BindView(R.id.act_result_volume) TextView volumeTextView;
-
     @BindView(R.id.act_result_recycler) RecyclerView resultsRecyclerView;
 
     @Override
