@@ -73,8 +73,6 @@ public class StockConcentrationDialogPreference extends DialogPreference {
             @Override
             public void onNothingSelected(AdapterView<?> parent) { /* do nothing */ }
         });
-
-
     }
 
     @Override

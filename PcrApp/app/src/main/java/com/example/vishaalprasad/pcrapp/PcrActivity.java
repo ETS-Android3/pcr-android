@@ -1,13 +1,11 @@
 package com.example.vishaalprasad.pcrapp;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +17,6 @@ import com.example.vishaalprasad.pcrapp.reactant_helpers.BufferReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.CustomReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.DntpReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ForwardPrimerReactant;
-import com.example.vishaalprasad.pcrapp.reactant_helpers.MissingStockConcentrationException;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrEngine;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrQuantity;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.PcrReactable;
@@ -27,22 +24,30 @@ import com.example.vishaalprasad.pcrapp.reactant_helpers.PolymeraseReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReactionVolume;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.ReversePrimerReactant;
 import com.example.vishaalprasad.pcrapp.reactant_helpers.TemplateReactant;
-import com.example.vishaalprasad.pcrapp.reactant_helpers.UnitMismatchException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PcrActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class PcrActivity extends AppCompatActivity {
 
     private static final String TAG = "PcrActivity";
 
     private static final int REQUEST_STOCK_CONCENTRATIONS = 1001;
 
     // Views
-    private Button calculateButton;
-    private Button customReactantButton;
-    private RecyclerView reactantsRecyclerView;
+    @BindView(R.id.pcr_act_calculate_btn)
+    Button calculateButton;
+
+    @BindView(R.id.pcr_act_custom_reactant)
+    Button customReactantButton;
+
+    @BindView(R.id.pcr_act_recycler_view)
+    RecyclerView reactantsRecyclerView;
 
     private List<PcrReactable> reactables;
     private ReactableAdapter reactantAdapter;
@@ -51,6 +56,7 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pcr);
+        ButterKnife.bind(this);
 
         initializeDefaultReactants();
         initialize();
@@ -113,13 +119,6 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
     }
 
     private void initialize() {
-        calculateButton = (Button) findViewById(R.id.pcr_act_calculate_btn);
-        calculateButton.setOnClickListener(this);
-        customReactantButton = (Button) findViewById(R.id.pcr_act_custom_reactant);
-        customReactantButton.setOnClickListener(this);
-
-        reactantsRecyclerView = (RecyclerView) findViewById(R.id.pcr_act_recycler_view);
-
         reactantAdapter = new ReactableAdapter(reactables);
 
         reactantsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -139,46 +138,22 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
         reactables.add(new PcrQuantity());
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.pcr_act_calculate_btn:
-
-                // engine -- calculation
-//                try {
-
-                    Intent resultActivityIntent = new Intent(this, PcrResultActivity.class);
-                    resultActivityIntent.putExtra(PcrResultActivity.KEY_REACTABLE_LIST, (Serializable)
-                            PcrEngine.Companion.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 2), getResources()));
-                    resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_VOLUME, ((ReactionVolume) reactables.get(reactables.size() - 2)).getAmount());
-                    resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_QUANTITY, ((PcrQuantity) reactables.get(reactables.size() - 1)).getQuantity());
-                    startActivity(resultActivityIntent);
-
-//                } catch (UnitMismatchException e) {
-//                    errorDialog(getString(R.string.error_mismatch));
-//                } catch (MissingStockConcentrationException e1) {
-//                    Log.e(TAG, "PcrEngine - ", e1);
-//                    errorDialog(getString(R.string.error_missing_stock));
-//                }
-
-                break;
-
-            case R.id.pcr_act_custom_reactant:
-
-                createCustomReactant();
-                break;
-
-            default:
-                break;
-        }
+    @OnClick(R.id.pcr_act_calculate_btn)
+    void onCalculatePcrClick() {
+        Intent resultActivityIntent = new Intent(this, PcrResultActivity.class);
+        resultActivityIntent.putExtra(PcrResultActivity.KEY_REACTABLE_LIST, (Serializable)
+                PcrEngine.Companion.calculatePcr(reactables, (ReactionVolume) reactables.get(reactables.size() - 2), getResources()));
+        resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_VOLUME, ((ReactionVolume) reactables.get(reactables.size() - 2)).getAmount());
+        resultActivityIntent.putExtra(PcrResultActivity.KEY_RACTION_QUANTITY, ((PcrQuantity) reactables.get(reactables.size() - 1)).getQuantity());
+        startActivity(resultActivityIntent);
     }
 
     /**
      * Allow the user to input a custom reactant
      * To be used with the Custom Reactant button
      */
-    private void createCustomReactant() {
+    @OnClick(R.id.pcr_act_custom_reactant)
+    void createCustomReactant() {
 
         EditText reactantNameEditText = new EditText(this);
         reactantNameEditText.setHint(R.string.custom_reactant_dialog_message);
@@ -196,7 +171,6 @@ public class PcrActivity extends AppCompatActivity implements View.OnClickListen
                 .show();
 
     }
-
 
     private void errorDialog(String message) {
 

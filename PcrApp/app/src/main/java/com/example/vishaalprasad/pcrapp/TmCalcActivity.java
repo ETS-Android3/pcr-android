@@ -4,23 +4,18 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Stack;
 
-public class TmCalcActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-    private Button ABtn;
-    private Button TBtn;
-    private Button CBtn;
-    private Button GBtn;
-    private Button clearBtn;
-    private Button deleteBtn;
-    private Button calcBtn;
+public class TmCalcActivity extends AppCompatActivity {
 
-    private TextView nucleotidesTV;
-    private TextView temperatureText;
+    @BindView(R.id.tm_calc_nucleotides) TextView nucleotidesTV;
+    @BindView(R.id.tm_calc_temperature_text) TextView temperatureText;
 
     private Stack<Character> nucleotidesArr;
 
@@ -29,38 +24,20 @@ public class TmCalcActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tm_calc);
 
-        initialize();
-    }
+        ButterKnife.bind(this);
 
-    private void initialize() {
         nucleotidesArr = new Stack<>();
-
-        ABtn = (Button) findViewById(R.id.tm_calc_A_btn);
-        TBtn = (Button) findViewById(R.id.tm_calc_T_btn);
-        CBtn = (Button) findViewById(R.id.tm_calc_C_btn);
-        GBtn = (Button) findViewById(R.id.tm_calc_G_btn);
-        calcBtn = (Button) findViewById(R.id.tm_calc_calc_button);
-        clearBtn = (Button) findViewById(R.id.tm_calc_clear_button);
-        deleteBtn = (Button) findViewById(R.id.tm_calc_delete_button);
-
-        nucleotidesTV = (TextView) findViewById(R.id.tm_calc_nucleotides);
-        temperatureText = (TextView) findViewById(R.id.tm_calc_temperature_text);
-
-        ABtn.setOnClickListener(this);
-        TBtn.setOnClickListener(this);
-        CBtn.setOnClickListener(this);
-        GBtn.setOnClickListener(this);
-        calcBtn.setOnClickListener(this);
-        clearBtn.setOnClickListener(this);
-        deleteBtn.setOnClickListener(this);
 
         temperatureText.setVisibility(View.INVISIBLE);
 
         updateText();
     }
 
-    @Override
-    public void onClick(View view) {
+    @OnClick({R.id.tm_calc_A_btn,
+            R.id.tm_calc_T_btn,
+            R.id.tm_calc_C_btn,
+            R.id.tm_calc_G_btn})
+    void push(View view) {
         switch (view.getId()) {
             case R.id.tm_calc_A_btn:
                 nucleotidesArr.push('A');
@@ -74,20 +51,35 @@ public class TmCalcActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.tm_calc_G_btn:
                 nucleotidesArr.push('G');
                 break;
-            case R.id.tm_calc_calc_button:
-                temperatureText.setVisibility(View.VISIBLE);
-                calculateTemperature();
-                break;
-            case R.id.tm_calc_delete_button:
-                if (!nucleotidesArr.isEmpty()) nucleotidesArr.pop();
-                temperatureText.setVisibility(View.INVISIBLE);
-                break;
-            case R.id.tm_calc_clear_button:
-                nucleotidesArr.clear();
-                temperatureText.setVisibility(View.INVISIBLE);
-            default:
-                break;
         }
+
+        updateText();
+    }
+
+    @OnClick(R.id.tm_calc_calc_button)
+    void onCalculateClick() {
+        temperatureText.setVisibility(View.VISIBLE);
+        calculateTemperature();
+
+        updateText();
+    }
+
+
+    @OnClick(R.id.tm_calc_delete_button)
+    void onDeleteClick() {
+        if (!nucleotidesArr.isEmpty()) {
+            nucleotidesArr.pop();
+        }
+
+        temperatureText.setVisibility(View.INVISIBLE);
+
+        updateText();
+    }
+
+    @OnClick(R.id.tm_calc_clear_button)
+    void onClearClick() {
+        nucleotidesArr.clear();
+        temperatureText.setVisibility(View.INVISIBLE);
 
         updateText();
     }
@@ -107,7 +99,6 @@ public class TmCalcActivity extends AppCompatActivity implements View.OnClickLis
             nucleotidesTV.setText(sb.toString());
             nucleotidesTV.setTextColor(Color.BLACK);
         }
-
     }
 
     private void calculateTemperature() {
@@ -115,52 +106,37 @@ public class TmCalcActivity extends AppCompatActivity implements View.OnClickLis
         float fg = 0;
         float fc = 0;
         float ft = 0;
-        float ftm = 0;
+        float ftm;
 
-        for (int i = 0; i < nucleotidesArr.size(); i++) {
-            switch (nucleotidesArr.get(i)) {
+        for (char base : nucleotidesArr) {
+            switch (base) {
                 case 'A':
                     fa++;
                     break;
+
                 case 'C':
                     fc++;
                     break;
+
                 case 'G':
                     fg++;
                     break;
+
                 case 'T':
                     ft++;
                     break;
+
                 default:
                     break;
-
             }
         }
-        if (nucleotidesArr.size() < 14)
+
+        if (nucleotidesArr.size() < 14) {
             ftm = ((2f * (fa + ft)) + (4f * (fg + fc)));
-        else
+        } else {
             ftm = (64.9f + (41f * (fg + fc - 16.4f)) / (fa + fc + fg + ft));
+        }
 
-        temperatureText.setText("" + ftm + (char) 0x00B0 + "C");
+        temperatureText.setText(getString(R.string.temp_celcius, ftm));
     }
-
-    /*
-        public static void main(String[] args) {
-
-		Scanner kb= new Scanner (System.in);
-		 String fprimer= kb.next();
-		 //f primers
-
-
-
-
-
-
-		//buffer needs toggle
-
-
-
-
-	}
-     */
 }

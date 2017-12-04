@@ -38,6 +38,7 @@
     <string name="input_nucleotides">Input Nucleotides</string>
     <string name="delete_str">Delete</string>
     <string name="tm_calc_str">TM Calculator</string>
+    <string name="temp_celcius">%1$f&#176;C</string>
 
     <!--Preferences-->
     <string name="pref_stock_conc_title">Stock Concentrations</string>

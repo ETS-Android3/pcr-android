@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindFont;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class PcrResultActivity extends AppCompatActivity {
 
     public static final String KEY_REACTABLE_LIST = "key_reactable_list";
@@ -25,14 +29,18 @@ public class PcrResultActivity extends AppCompatActivity {
     private int quantity;
     private double reactionVolume;
 
-    private TextView quantityTextView;
-    private TextView volumeTextView;
-    private RecyclerView resultsRecyclerView;
+    @BindView(R.id.act_result_quantity) TextView quantityTextView;
+
+    @BindView(R.id.act_result_volume) TextView volumeTextView;
+
+    @BindView(R.id.act_result_recycler) RecyclerView resultsRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_pcr_result);
+
+        ButterKnife.bind(this);
 
         getData();
 
@@ -47,10 +55,6 @@ public class PcrResultActivity extends AppCompatActivity {
     }
 
     private void initializeAndShowResults() {
-
-        quantityTextView = (TextView) findViewById(R.id.act_result_quantity);
-        volumeTextView = (TextView) findViewById(R.id.act_result_volume);
-        resultsRecyclerView = (RecyclerView) findViewById(R.id.act_result_recycler);
 
         AssetManager manager = getAssets();
         Typeface robotoSlabTypeface = Typeface.createFromAsset(manager, String.format(Locale.US, "fonts/%s", "RobotoSlab-Light.ttf"));

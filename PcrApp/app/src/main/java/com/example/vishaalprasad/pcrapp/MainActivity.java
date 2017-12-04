@@ -6,21 +6,22 @@ import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private TextView welcomeTextView;
-    private Button pcrCalculatorButton;
-    private Button tmCalculatorButton;
+    @BindView(R.id.main_welcome_txt)
+    TextView welcomeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +30,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         new PcrApplication();
 
-        initialize();
+        ButterKnife.bind(this);
 
+        initialize();
     }
 
     private void initialize() {
-        welcomeTextView = (TextView) findViewById(R.id.main_welcome_txt);
-        pcrCalculatorButton = (Button) findViewById(R.id.main_pcr_calculator_button);
-        pcrCalculatorButton.setOnClickListener(this);
-        tmCalculatorButton = (Button) findViewById(R.id.main_tm_calculator_button);
-        tmCalculatorButton.setOnClickListener(this);
 
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -51,23 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         welcomeTextView.setTypeface(robotoSlabTypeface);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.main_pcr_calculator_button:
-
-                Intent pcrActivityIntent = new Intent(this, PcrActivity.class);
-                startActivity(pcrActivityIntent);
-                break;
-
-            case R.id.main_tm_calculator_button:
-
-                Intent tmActivityIntent = new Intent(this, TmCalcActivity.class);
-                startActivity(tmActivityIntent);
-                break;
-
-            default:
-                break;
-        }
+    @OnClick(R.id.main_pcr_calculator_button)
+    void pcrCalcButtonClick() {
+        Intent pcrActivityIntent = new Intent(this, PcrActivity.class);
+        startActivity(pcrActivityIntent);
     }
+
+    @OnClick(R.id.main_tm_calculator_button)
+    void tmCalcButtonClick() {
+        Intent tmActivityIntent = new Intent(this, TmCalcActivity.class);
+        startActivity(tmActivityIntent);
+    }
+
 }
