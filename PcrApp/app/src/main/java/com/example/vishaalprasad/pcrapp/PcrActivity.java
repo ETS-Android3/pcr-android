@@ -31,22 +31,18 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import shortbread.Shortcut;
 
+@Shortcut(id="pcr_activity", shortLabel = "PCR Calculator")
 public class PcrActivity extends AppCompatActivity {
 
     private static final String TAG = "PcrActivity";
 
     private static final int REQUEST_STOCK_CONCENTRATIONS = 1001;
 
-    // Views
-    @BindView(R.id.pcr_act_calculate_btn)
-    Button calculateButton;
-
-    @BindView(R.id.pcr_act_custom_reactant)
-    Button customReactantButton;
-
-    @BindView(R.id.pcr_act_recycler_view)
-    RecyclerView reactantsRecyclerView;
+    @BindView(R.id.pcr_act_calculate_btn) Button calculateButton;
+    @BindView(R.id.pcr_act_custom_reactant) Button customReactantButton;
+    @BindView(R.id.pcr_act_recycler_view) RecyclerView reactantsRecyclerView;
 
     private List<PcrReactable> reactables;
     private ReactableAdapter reactantAdapter;

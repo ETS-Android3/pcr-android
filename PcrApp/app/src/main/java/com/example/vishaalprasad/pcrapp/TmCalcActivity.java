@@ -11,7 +11,9 @@ import java.util.Stack;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import shortbread.Shortcut;
 
+@Shortcut(id="tm_activity", shortLabel = "TM Calculator")
 public class TmCalcActivity extends AppCompatActivity {
 
     @BindView(R.id.tm_calc_nucleotides) TextView nucleotidesTV;
