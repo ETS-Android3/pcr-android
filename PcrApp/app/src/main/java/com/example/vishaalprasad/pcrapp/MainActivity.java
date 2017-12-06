@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    @BindView(R.id.main_welcome_txt)
-    TextView welcomeTextView;
+    @BindView(R.id.main_welcome_txt) TextView welcomeTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

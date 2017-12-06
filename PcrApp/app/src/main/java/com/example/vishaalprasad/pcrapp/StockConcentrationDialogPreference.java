@@ -36,6 +36,7 @@ public class StockConcentrationDialogPreference extends DialogPreference {
 
         if (concentrationReactant.getStockConcentration() == null) {
             setSummary(getContext().getString(R.string.missing_stock_concentration));
+
         } else {
             setSummary(String.format(Locale.US, "%f %s", concentrationReactant.getStockConcentration().getAmount(),
                     concentrationReactant.getStockConcentration().getUnit().getDisplayName(getContext().getResources())));
