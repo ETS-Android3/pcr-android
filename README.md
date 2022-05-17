@@ -4,8 +4,6 @@ An Android application to facilitate PCR calculations in the lab.  Enter custom 
 
 <img src="images/screenshot.png" width="500">
 
-Coming soon to the Google Play Store 
-
 ## Installing and Running 
 This Android app compiles at API 25, but compatible with API 21 and later. 
 
